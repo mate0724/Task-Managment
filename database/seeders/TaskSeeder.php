@@ -18,8 +18,8 @@ class TaskSeeder extends Seeder
             'description' => 'Create a responsive homepage design.',
             'status' => 'todo',
             'priority' => 'high',
-            'dua_date' => now()->addDays(7),
-            'assigned_to' => 2, // John Doe
+            'due_date' => now()->addDays(7),
+            'assigned_to' => 5, // John Doe
         ]);
 
         Task::create([
@@ -28,7 +28,7 @@ class TaskSeeder extends Seeder
             'status' => 'in_progress',
             'priority' => 'medium',
             'due_date' => now()->addDays(3),
-            'assigned_to' => 3, // Jane Smith
+            'assigned_to' => 6, // Jane Smith
         ]);
     }
 }
