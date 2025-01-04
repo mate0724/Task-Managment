@@ -11,16 +11,29 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
 
                     @if (session('success'))
-                        <div class="mb-4 text-green-600">
-                            {{ session('success') }}
-                        </div>
+                    <div class="mb-4 text-green-600">
+                        {{ session('success') }}
+                    </div>
                     @endif
 
-                    <!-- Keresés -->
+                    <!-- Keresés 
                     <form method="GET" action="{{ route('users.index') }}" class="mb-4">
                         <x-text-input name="search" class="block mt-1 w-full" type="text" value="{{ old('search', $search) }}" placeholder="Search by name or email" />
                         <x-primary-button class="mt-2">{{ __('Search') }}</x-primary-button>
                     </form>
+                    -->
+
+                    <!-- Kereső és Export gomb -->
+                    <div class="flex justify-between items-center mb-4">
+                        <form method="GET" action="{{ route('users.index') }}">
+                            <x-text-input name="search" type="text" value="{{ old('search', $search) }}" placeholder="Search" />
+                            <x-primary-button class="mt-2">{{ __('Search') }}</x-primary-button>
+                        </form>
+
+                        <a href="{{ route('users.export') }}" class="ml-4 inline-flex items-center px-4 py-2 bg-blue-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-600 focus:bg-blue-600 active:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                            <x-primary-button class="mt-2">{{ __('Export') }}</x-primary-button>
+                        </a>
+                    </div>
 
                     <!-- Tagok listázása -->
                     <table class="table-auto w-full">
@@ -34,19 +47,19 @@
                         </thead>
                         <tbody>
                             @foreach ($users as $user)
-                                <tr>
-                                    <td class="px-4 py-2">{{ $user->name }}</td>
-                                    <td class="px-4 py-2">{{ $user->email }}</td>
-                                    <td class="px-4 py-2">{{ $user->job_title }}</td>
-                                    <td class="px-4 py-2">
-                                        <a href="{{ route('users.edit', $user->id) }}" class="text-blue-500 hover:text-blue-700">{{ __('Edit') }}</a>
-                                        <form method="POST" action="{{ route('users.destroy', $user->id) }}" style="display:inline;">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="text-red-500 hover:text-red-700">{{ __('Delete') }}</button>
-                                        </form>
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td class="px-4 py-2">{{ $user->name }}</td>
+                                <td class="px-4 py-2">{{ $user->email }}</td>
+                                <td class="px-4 py-2">{{ $user->job_title }}</td>
+                                <td class="px-4 py-2">
+                                    <a href="{{ route('users.edit', $user->id) }}" class="text-blue-500 hover:text-blue-700">{{ __('Edit') }}</a>
+                                    <form method="POST" action="{{ route('users.destroy', $user->id) }}" style="display:inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="text-red-500 hover:text-red-700">{{ __('Delete') }}</button>
+                                    </form>
+                                </td>
+                            </tr>
                             @endforeach
                         </tbody>
                     </table>

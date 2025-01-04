@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Response;
 
 class UserController extends Controller
 {
@@ -70,5 +71,37 @@ class UserController extends Controller
         $user->delete();
 
         return redirect()->route('users.index')->with('success', 'User deleted successfully!');
+    }
+
+    public function export()
+    {
+        $users = User::all(['name', 'email', 'job_title']);
+
+        $csvHeader = ['Name', 'Email', 'Job Title'];
+        $csvData = $users->map(function ($user) {
+            return [
+                $user->name,
+                $user->email,
+                $user->job_title,
+            ];
+        });
+
+        $fileName = 'users_' . now()->format('Y_m_d_H_i_s') . '.csv';
+
+        $handle = fopen('php://temp', 'r+');
+        fputcsv($handle, $csvHeader);
+
+        foreach ($csvData as $row) {
+            fputcsv($handle, $row);
+        }
+
+        rewind($handle);
+        $content = stream_get_contents($handle);
+        fclose($handle);
+
+        return Response::make($content, 200, [
+            'Content-Type' => 'text/csv',
+            'Content-Disposition' => 'attachment; filename="' . $fileName . '"',
+        ]);
     }
 }
