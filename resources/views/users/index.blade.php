@@ -56,7 +56,7 @@
                                 <td class="px-4 py-2">{{ $user->email }}</td>
                                 <td class="px-4 py-2">{{ $user->job_title }}</td>
                                 <td class="px-4 py-2">
-                                    <a href="{{ route('users.edit', $user->id) }}" </a>
+                                    <a href="{{ route('users.edit', $user->id) }}" <x-primary-button class="mt-2 bg-blue-500 hover:bg-blue-600">{{ __('Export') }}</x-primary-button></a>
                                     <form method="POST" action="{{ route('users.destroy', $user->id) }}" style="display:inline;">
                                         @csrf
                                         @method('DELETE')
