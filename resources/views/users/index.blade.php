@@ -17,12 +17,7 @@
                     </div>
                     @endif
 
-                    <!-- Keresés 
-                    <form method="GET" action="{{ route('users.index') }}" class="mb-4">
-                        <x-text-input name="search" class="block mt-1 w-full" type="text" value="{{ old('search', $search) }}" placeholder="Search by name or email" />
-                        <x-primary-button class="mt-2">{{ __('Search') }}</x-primary-button>
-                    </form>
-                    -->
+                   
 
                     <!-- Kereső és Export gomb -->
                     <div class="flex justify-between items-center mb-4">
@@ -56,7 +51,7 @@
                                 <td class="px-4 py-2">{{ $user->email }}</td>
                                 <td class="px-4 py-2">{{ $user->job_title }}</td>
                                 <td class="px-4 py-2">
-                                    <a href="{{ route('users.edit', $user->id) }}" <x-primary-button class="mt-2 bg-blue-500 hover:bg-blue-600">{{ __('Export') }}</x-primary-button></a>
+                                    <a href="{{ route('users.edit', $user->id) }}" <x-primary-button class="mt-2 bg-blue-500 hover:bg-blue-600">{{ __('Edit') }}</x-primary-button></a>
                                     <form method="POST" action="{{ route('users.destroy', $user->id) }}" style="display:inline;">
                                         @csrf
                                         @method('DELETE')
@@ -103,22 +98,6 @@
             opacity: 80%;
         }
 
-        .edit_button {
-            background: linear-gradient(140.14deg, #ec540e 15.05%, #d6361f 114.99%) padding-box,
-                linear-gradient(142.51deg, #ff9465 8.65%, #af1905 88.82%) border-box;
-            border-radius: 7px;
-            border: 2px solid transparent;
-
-            text-shadow: 1px 1px 1px #00000040;
-
-
-            padding: 10px 40px;
-            line-height: 20px;
-            cursor: pointer;
-            transition: all 0.3s;
-            color: white;
-            font-size: 18px;
-            font-weight: 500;
-        }
+        
     </style>
 </x-app-layout>
