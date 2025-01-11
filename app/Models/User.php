@@ -34,6 +34,21 @@ class User extends Authenticatable
     {
         return $this->hasMany(Comment::class);
     }
+    
+    /**
+     * Azok a csoportok, amelyeknek a felhasználó tagja.
+     */
+    public function groups()
+    {
+        return $this->belongsToMany(Group::class, 'group_user');
+    }
+
+    /* Azok a csoportok, amelyeknek a felhasználó vezetője.*/
+    public function ledGroups()
+    {
+        return $this->hasMany(Group::class, 'leader_id');
+    }
+
 
     /**
      * The attributes that should be hidden for serialization.

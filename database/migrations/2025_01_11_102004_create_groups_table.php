@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Groups table
+        
         Schema::create('groups', function (Blueprint $table) {
             $table->id();
             $table->string('name');
@@ -20,7 +20,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Group-User pivot table
+       
         Schema::create('group_user', function (Blueprint $table) {
             $table->id();
             $table->foreignId('group_id')->constrained('groups')->onDelete('cascade');
