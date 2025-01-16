@@ -38,14 +38,14 @@
                                 <td class="border border-gray-300 px-4 py-2">{{ $group->members->count() }}</td>
                                 <td class="border border-gray-300 px-4 py-2">
                                     <a href="{{ route('groups.edit', $group) }}"
-                                        class="bg-yellow-500 hover:bg-yellow-700 text-white py-1 px-2 rounded">
+                                        class="">
                                         {{ __('Szerkesztés') }}
                                     </a>
                                     <form action="{{ route('groups.destroy', $group) }}" method="POST" class="inline-block">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit"
-                                            class="bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded"
+                                            class=""
                                             onclick="return confirmDelete()">
                                             {{ __('Törlés') }}
                                         </button>

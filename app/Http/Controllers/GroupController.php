@@ -14,10 +14,12 @@ class GroupController extends Controller
     //Csoportok listázása.
     public function index()
     {
-        $groups = Group::with('leader, members')->get();
+        // Betöltjük a csoportokat a kapcsolatokkal együtt
+        $groups = Group::with(['leader', 'members'])->get();
 
         return view('groups.index', compact('groups'));
     }
+
 
     //Csoport létrehozása.
     public function create()
@@ -84,7 +86,7 @@ class GroupController extends Controller
     }
 
     //Csoport törlése.
-     
+
     public function destroy(Group $group)
     {
         $group->delete();
