@@ -14,11 +14,20 @@ class GroupController extends Controller
     //Csoportok listázása.
     public function index()
     {
-        // Betöltjük a csoportokat a kapcsolatokkal együtt
-        $groups = Group::with(['leader', 'members'])->get();
+        // Ha a felhasználó admin, minden csoportot betöltünk
+        if (auth()->user()->role === 'admin') {
+            $groups = Group::with(['leader', 'members'])->get();
+        }
+        // Ha normál felhasználó, csak a saját csoportjait töltjük be
+        else {
+            $groups = Group::whereHas('members', function ($query) {
+                $query->where('user_id', auth()->id());
+            })->with(['leader', 'members'])->get();
+        }
 
         return view('groups.index', compact('groups'));
     }
+
 
 
     //Csoport létrehozása.

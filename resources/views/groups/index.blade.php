@@ -9,13 +9,13 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
+                    @if (auth()->user()->role === 'admin')
                     <div class="flex justify-end mb-4">
-                        <a href="{{ route('groups.create') }}"
-                        >
+                        <a href="{{ route('groups.create') }}">
                             {{ __('Új csoport létrehozása') }}
                         </a>
                     </div>
-
+                    @endif
                     @if ($groups->isEmpty())
                     <p>{{ __('Nincsenek csoportok.') }}</p>
                     @else
@@ -25,8 +25,10 @@
                                 <th class="border border-gray-300 px-4 py-2">{{ __('Név') }}</th>
                                 <th class="border border-gray-300 px-4 py-2">{{ __('Leírás') }}</th>
                                 <th class="border border-gray-300 px-4 py-2">{{ __('Csoportvezető') }}</th>
-                                <th class="border border-gray-300 px-4 py-2">{{ __('Tagok száma') }}</th>
+                                <th class="border border-gray-300 px-4 py-2">{{ __('Tagok') }}</th>
+                                @if (auth()->user()->role === 'admin')
                                 <th class="border border-gray-300 px-4 py-2">{{ __('Műveletek') }}</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -35,24 +37,24 @@
                                 <td class="border border-gray-300 px-4 py-2">{{ $group->name }}</td>
                                 <td class="border border-gray-300 px-4 py-2">{{ $group->description }}</td>
                                 <td class="border border-gray-300 px-4 py-2">{{ $group->leader->name }}</td>
-                                <td class="border border-gray-300 px-4 py-2">{{ $group->members->count() }}</td>
                                 <td class="border border-gray-300 px-4 py-2">
-                                    <a href="{{ route('groups.edit', $group) }}"
-                                        class="">
+                                    <!-- Tagok neveinek felsorolása, vesszővel elválasztva -->
+                                    {{ $group->members->pluck('name')->join(', ') }}
+                                </td>
+                                @if (auth()->user()->role === 'admin')
+                                <td class="border border-gray-300 px-4 py-2">
+                                    <a href="{{ route('groups.edit', $group) }}" class="text-blue-500 hover:underline">
                                         {{ __('Szerkesztés') }}
                                     </a>
                                     <form action="{{ route('groups.destroy', $group) }}" method="POST" class="inline-block">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit"
-                                            class=""
-                                            onclick="return confirmDelete()">
+                                        <button type="submit" class="text-red-500 hover:underline" onclick="return confirmDelete()">
                                             {{ __('Törlés') }}
                                         </button>
-
                                     </form>
-
                                 </td>
+                                @endif
                             </tr>
                             @endforeach
                         </tbody>
