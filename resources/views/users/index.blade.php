@@ -17,7 +17,7 @@
                     </div>
                     @endif
 
-                   
+
 
                     <!-- Kereső és Export gomb -->
                     <div class="flex justify-between items-center mb-4">
@@ -25,9 +25,20 @@
                             <x-text-input name="search" type="text" value="{{ old('search', $search) }}" placeholder="Search" />
                             <x-primary-button class="mt-2">{{ __('Search') }}</x-primary-button>
                         </form>
-                        <a href="{{ route('users.export') }}" class="ml-4 inline-flex items-center px-4 py-2 bg-blue-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-600 focus:bg-blue-600 active:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-                            <x-primary-button class="mt-2">{{ __('Export') }}</x-primary-button>
-                        </a>
+
+
+
+                        @if (auth()->user()->role === 'admin')
+                        <div>
+                            <a href="{{ route('users.export') }}" class="ml-4 inline-flex items-center px-4 py-2 bg-blue-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-600 focus:bg-blue-600 active:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                                <x-primary-button class="mt-2">{{ __('Export') }}</x-primary-button>
+                            </a>
+                            <a href="{{ route('users.create') }}">
+                                <x-secondary-button class="mt-2">{{ __('Új tag hozzáadása') }}</x-secondary-button>
+
+                            </a>
+                        </div>
+                        @endif
 
 
                     </div>
@@ -97,7 +108,5 @@
             box-shadow: none;
             opacity: 80%;
         }
-
-        
     </style>
 </x-app-layout>
