@@ -16,6 +16,7 @@ class Task extends Model
         'priority',
         'due_date',
         'assigned_to',
+        'file_path',
     ];
 
     public function user(){
