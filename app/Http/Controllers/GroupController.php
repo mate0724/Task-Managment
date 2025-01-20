@@ -11,6 +11,8 @@ use phpDocumentor\Reflection\Types\Nullable;
 class GroupController extends Controller
 {
 
+
+
     //Csoportok listázása.
     public function index()
     {
@@ -18,15 +20,18 @@ class GroupController extends Controller
         if (auth()->user()->role === 'admin') {
             $groups = Group::with(['leader', 'members'])->get();
         }
-        // Ha normál felhasználó, csak a saját csoportjait töltjük be
+        // Ha normál felhasználó, betöltjük azokat a csoportokat, amelyekben tag vagy csoportvezető
         else {
-            $groups = Group::whereHas('members', function ($query) {
-                $query->where('user_id', auth()->id());
+            $groups = Group::where(function ($query) {
+                $query->whereHas('members', function ($query) {
+                    $query->where('user_id', auth()->id());
+                })->orWhere('leader_id', auth()->id());
             })->with(['leader', 'members'])->get();
         }
 
         return view('groups.index', compact('groups'));
     }
+
 
 
 
