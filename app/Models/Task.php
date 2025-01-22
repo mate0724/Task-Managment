@@ -19,13 +19,18 @@ class Task extends Model
         'file_path',
     ];
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class, 'assigned_to');
     }
 
-    public function comments(){
+    public function comments()
+    {
         return $this->hasMany(Comment::class);
     }
 
-    
+    public function group()
+    {
+        return $this->belongsTo(Group::class);
+    }
 }

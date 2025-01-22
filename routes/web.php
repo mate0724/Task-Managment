@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GroupController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {
@@ -34,6 +36,25 @@ Route::get('/users/export', [UserController::class, 'export'])->name('users.expo
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('groups', GroupController::class);
+});
+
+
+Route::prefix('groups/{group}')->group(function () {
+    Route::get('tasks', [TaskController::class, 'index'])->name('groups.tasks.index');
+    Route::get('tasks/create', [TaskController::class, 'create'])->name('groups.tasks.create');
+    Route::post('tasks', [TaskController::class, 'store'])->name('groups.tasks.store');
+    Route::get('tasks/{task}/edit', [TaskController::class, 'edit'])->name('groups.tasks.edit');
+    //Route::put('tasks/{task}', [TaskController::class, 'update'])->name('groups.tasks.update');
+    Route::get('tasks/{task}', [TaskController::class, 'show'])->name('groups.tasks.show');
+    Route::delete('tasks/{task}', [TaskController::class, 'destroy'])->name('groups.tasks.destroy');
+});
+
+// Kommentek kezelése
+Route::prefix('tasks/{task}')->group(function () {
+    //Route::post('comments', [CommentController::class, 'store'])->name('tasks.comments.store');
+    Route::post('comments', [CommentController::class, 'store'])->name('tasks.comments.store');
+
+    Route::delete('comments/{comment}', [CommentController::class, 'destroy'])->name('tasks.comments.destroy');
 });
 
 require __DIR__.'/auth.php';
