@@ -22,12 +22,12 @@
                     <table class="table-auto w-full border-collapse border border-gray-300">
                         <thead>
                             <tr>
-                                <th class="border border-gray-300 px-4 py-2">{{ __('Név') }}</th>
-                                <th class="border border-gray-300 px-4 py-2">{{ __('Leírás') }}</th>
-                                <th class="border border-gray-300 px-4 py-2">{{ __('Csoportvezető') }}</th>
-                                <th class="border border-gray-300 px-4 py-2">{{ __('Tagok') }}</th>
+                                <th class="border border-gray-300 px-4 py-2">{{ __('Name') }}</th>
+                                <th class="border border-gray-300 px-4 py-2">{{ __('Description') }}</th>
+                                <th class="border border-gray-300 px-4 py-2">{{ __('Group Leader') }}</th>
+                                <th class="border border-gray-300 px-4 py-2">{{ __('Members') }}</th>
                                 @if (auth()->user()->role === 'admin')
-                                <th class="border border-gray-300 px-4 py-2">{{ __('Műveletek') }}</th>
+                                <th class="border border-gray-300 px-4 py-2">{{ __('Edit') }}</th>
                                 @endif
                             </tr>
                         </thead>
@@ -48,13 +48,13 @@
                                 @if (auth()->user()->role === 'admin')
                                 <td class="border border-gray-300 px-4 py-2">
                                     <a href="{{ route('groups.edit', $group) }}" class="text-blue-500 hover:underline">
-                                        {{ __('Szerkesztés') }}
+                                        {{ __('Edit') }}
                                     </a>
                                     <form action="{{ route('groups.destroy', $group) }}" method="POST" class="inline-block">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="text-red-500 hover:underline" onclick="return confirmDelete()">
-                                            {{ __('Törlés') }}
+                                            {{ __('Delete') }}
                                         </button>
                                     </form>
                                 </td>
