@@ -3,6 +3,7 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             Csoport: {{ $group->name }} - Feladatok
         </h2>
+        
     </x-slot>
 
     <div class="py-12">
@@ -38,11 +39,11 @@
 
 
                                 @if (auth()->id() === $group->leader_id)
-                                <a href="{{ route('groups.tasks.edit', [$group, $task]) }}" class="btn btn-warning btn-sm">Szerkesztés</a>
+                                <a href="{{ route('groups.tasks.edit', [$group, $task]) }}" class="px-4 py-2 bg-black-500 text-black rounded-md shadow-md">Szerkesztés</a>
                                 <form action="{{ route('groups.tasks.destroy', [$group, $task]) }}" method="POST" style="display: inline;">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="btn btn-danger btn-sm" type="submit">Törlés</button>
+                                    <button class="px-4 py-2 bg-blue-500 text-black rounded-md shadow-md" type="submit">Törlés</button>
                                 </form>
                                 @endif
                             </div>

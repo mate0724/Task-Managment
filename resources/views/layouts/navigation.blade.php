@@ -30,8 +30,13 @@
                     </x-nav-link>
                 </div>
 
-                
 
+                <!-- <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('tasks.index', ['group' => Auth::user()->group_id ?? 1])"
+                        :active="request()->routeIs('tasks.index')">
+                        {{ __('My Tasks') }}
+                    </x-nav-link>
+                </div> -->
 
 
             </div>

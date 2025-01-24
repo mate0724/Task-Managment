@@ -11,13 +11,13 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     @if (auth()->user()->role === 'admin')
                     <div class="flex justify-end mb-4">
-                        <a href="{{ route('groups.create') }}" >
-                            {{ __('Új csoport létrehozása') }}
+                        <a href="{{ route('groups.create') }}">
+                            {{ __('Add Group') }}
                         </a>
                     </div>
                     @endif
                     @if ($groups->isEmpty())
-                    <p>{{ __('Nincsenek csoportok.') }}</p>
+                    <p>{{ __('There are no groups.') }}</p>
                     @else
                     <table class="table-auto w-full border-collapse border border-gray-300">
                         <thead>
@@ -34,7 +34,11 @@
                         <tbody>
                             @foreach ($groups as $group)
                             <tr>
-                                <td class="border border-gray-300 px-4 py-2">{{ $group->name }}</td>
+                                <td>
+                                    <a href="{{ route('tasks.index', ['group' => $group->id]) }}" class="text-blue-500 hover:underline">
+                                        {{ $group->name }}
+                                    </a>
+                                </td>
                                 <td class="border border-gray-300 px-4 py-2">{{ $group->description }}</td>
                                 <td class="border border-gray-300 px-4 py-2">{{ $group->leader->name }}</td>
                                 <td class="border border-gray-300 px-4 py-2">
