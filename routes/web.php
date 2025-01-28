@@ -5,6 +5,7 @@ use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {
@@ -50,12 +51,19 @@ Route::prefix('groups/{group}')->group(function () {
     Route::delete('tasks/{task}', [TaskController::class, 'destroy'])->name('groups.tasks.destroy');
 });
 
-// Kommentek kezelése
+
 Route::prefix('tasks/{task}')->group(function () {
     //Route::post('comments', [CommentController::class, 'store'])->name('tasks.comments.store');
     Route::post('comments', [CommentController::class, 'store'])->name('tasks.comments.store');
 
     Route::delete('comments/{comment}', [CommentController::class, 'destroy'])->name('tasks.comments.destroy');
 });
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/meetings', [MeetingController::class, 'index'])->name('meetings.index');
+    Route::get('/meetings/create', [MeetingController::class, 'create'])->name('meetings.create');
+    Route::post('/meetings', [MeetingController::class, 'store'])->name('meetings.store');
+});
+
 
 require __DIR__.'/auth.php';

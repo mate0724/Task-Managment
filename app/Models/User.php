@@ -49,6 +49,16 @@ class User extends Authenticatable
         return $this->hasMany(Group::class, 'leader_id');
     }
 
+    public function meetings()
+    {
+        return $this->belongsToMany(Meeting::class, 'meeting_user');
+    }
+
+    public function createdMeetings()
+    {
+        return $this->hasMany(Meeting::class, 'created_by');
+    }
+
 
     /**
      * The attributes that should be hidden for serialization.

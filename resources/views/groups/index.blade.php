@@ -10,12 +10,6 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     @if (auth()->user()->role === 'admin')
-
-
-
-
-
-
                     <div class="flex justify-end mb-4">
                         <a href="{{ route('groups.create') }}">
                             <button class="add_group_button">
