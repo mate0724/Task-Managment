@@ -11,13 +11,18 @@ class MeetingController extends Controller
 {
     public function index()
     {
-        $meetings = Meeting::with('attendees')
-        ->whereHas('attendees', function ($query){
-            $query->where('user_id', auth()->id());
-        })
-        ->orderBy('scheduled_at')
-        ->get();
-    
+        if (auth()->user()->role === 'admin') {
+            $meetings = Meeting::orderBy('scheduled_at', 'asc')->get();
+        }
+        else {
+            $meetings = Meeting::with('attendees')
+                ->whereHas('attendees', function ($query) {
+                    $query->where('user_id', auth()->id());
+                })
+                ->orderBy('scheduled_at')
+                ->get();
+        }
+
         return view('meetings.index', compact('meetings'));
     }
 
@@ -53,7 +58,4 @@ class MeetingController extends Controller
 
         return redirect()->route('meetings.index')->with('success', 'Meeting created successfully.');
     }
-
-
-    
 }

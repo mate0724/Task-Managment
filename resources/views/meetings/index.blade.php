@@ -9,25 +9,25 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="p-6 flex items-center justify-between">
-
                     <h3 class="text-lg font-medium text-gray-900 mb-4">Upcoming Meetings</h3>
+                    
                     <a href="{{ route('meetings.create') }}" class="">
                         Create Meeting
                     </a>
                 </div>
                 <ul>
                     @forelse ($meetings as $meeting)
-                    <li class="mb-4">
-                        <strong>{{ $meeting->title }}</strong> <br>
-                        <span>{{ $meeting->scheduled_at->format('Y-m-d H:i') }}</span> <br>
-                        <span>{{ $meeting->location }}</span> <br>
-                        <span>Attendees: {{ $meeting->attendees->pluck('name')->join(', ') }}</span>
-                    </li>
+                        <li class="mb-4 p-4 bg-gray-100 rounded-md shadow-sm">
+                            <strong class="text-lg text-gray-700">{{ $meeting->title }}</strong> <br>
+                            <span class="text-sm text-gray-500">{{ $meeting->scheduled_at->format('Y-m-d H:i') }}</span> <br>
+                            <span class="text-sm text-gray-500">{{ $meeting->location }}</span> <br>
+                            <span class="text-sm text-gray-500">Attendees: {{ $meeting->attendees->pluck('name')->join(', ') }}</span> <br>
+                            <span class="text-sm text-gray-500">{{ $meeting->description }}</span> <br>
+                        </li>
                     @empty
-                    <p>No meetings found.</p>
+                        <p class="p-4 text-gray-500">No meetings found.</p>
                     @endforelse
                 </ul>
-
             </div>
         </div>
     </div>
