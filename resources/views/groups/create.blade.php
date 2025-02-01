@@ -45,10 +45,7 @@
                         </div>
 
                         <div class="flex justify-end">
-                            <button type="submit" 
-                                    class="">
-                                {{ __('Létrehozás') }}
-                            </button>
+                            <x-primary-button class="mt-2">{{ __('Létrehozás') }}</x-primary-button>
                         </div>
                     </form>
                 </div>

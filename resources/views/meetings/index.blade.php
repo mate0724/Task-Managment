@@ -11,9 +11,11 @@
                 <div class="p-6 flex items-center justify-between">
                     <h3 class="text-lg font-medium text-gray-900 mb-4">Upcoming Meetings</h3>
                     
-                    <a href="{{ route('meetings.create') }}" class="">
+                    <x-primary-button class="mt-2">
+                        <a href="{{ route('meetings.create') }}" class="">
                         Create Meeting
-                    </a>
+                    </a></x-primary-button>
+                    
                 </div>
                 <ul>
                     @forelse ($meetings as $meeting)
