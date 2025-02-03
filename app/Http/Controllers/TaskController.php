@@ -95,7 +95,7 @@ class TaskController extends Controller
 
         $task->update($validated);
 
-        return redirect()->route('groups.tasks.index', $group)
+        return redirect()->route('tasks.index', $group)
             ->with('success', 'Feladat sikeresen frissítve!');
     }
 

@@ -45,7 +45,6 @@ Route::middleware(['auth'])->group(function () {
 
 
 Route::prefix('groups/{group}')->group(function () {
-    Route::get('tasks', [TaskController::class, 'index'])->name('groups.tasks.index');
     Route::get('/tasks', [TaskController::class, 'index'])->name('tasks.index');
     Route::get('tasks/create', [TaskController::class, 'create'])->name('groups.tasks.create');
     Route::post('tasks', [TaskController::class, 'store'])->name('groups.tasks.store');
@@ -54,6 +53,9 @@ Route::prefix('groups/{group}')->group(function () {
     Route::get('tasks/{task}', [TaskController::class, 'show'])->name('groups.tasks.show');
     Route::delete('tasks/{task}', [TaskController::class, 'destroy'])->name('groups.tasks.destroy');
 });
+
+Route::get('tasks', [TaskController::class, 'index'])->name('groups.tasks.index');
+
 
 
 Route::prefix('tasks/{task}')->group(function () {

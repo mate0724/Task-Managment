@@ -94,7 +94,7 @@ return [
     'meetings' => 'Értekezletek',
 
     //tasks.edit.php
-    'edit_task' => 'Feladata szerkesztése',
+    'edit_task' => 'Feladat szerkesztése',
     'cancel' => 'Mégse',
     'upload_file' => 'Fájl feltöltése',
 

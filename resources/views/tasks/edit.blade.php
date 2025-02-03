@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        {{ __('messages.edi_task') }}
+        {{ __('messages.edit_task') }}
         </h2>
     </x-slot>
 
@@ -62,10 +62,12 @@
 
                         <!-- Mentés -->
                         <div>
+                            <a href="{{ route('tasks.index', $group->id) }}">
                             <button type="submit" class="px-4 py-2 bg-blue-500 text-black rounded-md shadow-md">
                             {{ __('messages.save') }}
                             </button>
-                            <a href="{{ route('groups.tasks.index', $group->id) }}" class="px-4 py-2 bg-gray-500 text-white rounded-md shadow-md">
+                            </a>
+                            <a href="{{ route('tasks.index', $group->id) }}" class="px-4 py-2 bg-gray-500 text-white rounded-md shadow-md">
                             {{ __('messages.cancel') }}
                             </a>
                         </div>
