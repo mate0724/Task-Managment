@@ -93,4 +93,9 @@ return [
     'users' => 'Felhasználók',
     'meetings' => 'Értekezletek',
 
+    //tasks.edit.php
+    'edit_task' => 'Feladata szerkesztése',
+    'cancel' => 'Mégse',
+    'upload_file' => 'Fájl feltöltése',
+
 ];

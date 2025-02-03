@@ -87,7 +87,9 @@ return [
 
 
     //tasks.edit.php
-
+    'edit_task' => 'Edit Task',
+    'cancel' => 'Cancel',
+    'upload_file' => 'Upload File',
 
     //tasks.show.php
     'view_task' => 'View Task',
