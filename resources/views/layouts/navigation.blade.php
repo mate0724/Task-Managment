@@ -14,19 +14,19 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Home') }}
+                        {{ __('messages.home') }}
                     </x-nav-link>
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('groups.index') " :active="request()->routeIs('dashboard')">
-                        {{ __('Groups') }}
+                        {{ __('messages.groups') }}
                     </x-nav-link>
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('users.index') " :active="request()->routeIs('dashboard')">
-                        {{ __('Users') }}
+                        {{ __('messages.users') }}
                     </x-nav-link>
                 </div>
 
@@ -40,7 +40,7 @@
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('meetings.index') " :active="request()->routeIs('dashboard')">
-                        {{ __('My Meetings') }}
+                        {{ __('messages.meetings') }}
                     </x-nav-link>
                 </div>
 
@@ -98,24 +98,24 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Home') }}
+                {{ __('messages.home') }}
             </x-responsive-nav-link>
         </div>
 
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('groups.index')" :active="request()->routeIs('dashboard')">
-                {{ __('Groups') }}
+                {{ __('messages.groups') }}
             </x-responsive-nav-link>
         </div>
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('users.index')" :active="request()->routeIs('dashboard')">
-                {{ __('Users') }}
+                {{ __('messages.users') }}
             </x-responsive-nav-link>
         </div>
 
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('meetings.index')" :active="request()->routeIs('dashboard')">
-                {{ __('My Meetings') }}
+                {{ __('messages.meetings') }}
             </x-responsive-nav-link>
         </div>
 

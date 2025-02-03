@@ -88,4 +88,9 @@ return [
     'comment' => 'Hozzászólás',
     'write_comment' => 'Írj egy kommentet...',
 
+    //navigation.blade.php
+    'home' => 'Főoldal',
+    'users' => 'Felhasználók',
+    'meetings' => 'Értekezletek',
+
 ];

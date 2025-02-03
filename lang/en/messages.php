@@ -94,6 +94,12 @@ return [
     'comment' => 'Comment',
     'write_comment' => 'Write a comment...',
 
+    //navigation.blade.php
+    'home' => 'Home',
+    'users' => 'Users',
+    'meetings' => 'Meetings',
+    
+
 
     
     
