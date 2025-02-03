@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('My Meetings') }}
+            {{ __('messages.my_meetings') }}
         </h2>
     </x-slot>
 
@@ -9,11 +9,11 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="p-6 flex items-center justify-between">
-                    <h3 class="text-lg font-medium text-gray-900 mb-4">Upcoming Meetings</h3>
+                    <h3 class="text-lg font-medium text-gray-900 mb-4">{{ __('messages.upcoming_meetings') }}</h3>
                     
                     <x-primary-button class="mt-2">
                         <a href="{{ route('meetings.create') }}" class="">
-                        Create Meeting
+                        {{ __('messages.create_meeting') }}
                     </a></x-primary-button>
                     
                 </div>

@@ -7,6 +7,10 @@ return [
     'actions' => 'Actions',
     'edit' => 'Edit',
     'delete' => 'Delete',
+    'search' => 'Search',
+    'export' => 'Export',
+    'add_user' => 'Add User',
+    'users_list' => 'Users List',
 
     //dashboard.blade.php
     'welcome' => 'Welcome to the application!',
@@ -34,6 +38,61 @@ return [
     //groups.edit.php
     'edit_group' => 'Edit Group',
 
+    //users.edit.php
+    'edit_user' => 'Edit User',
+    'update' => 'Update',
+
+
+
+    //users.create.php
+    'create_user' => 'Create User',
+    'password' => 'Password',
+    'confirm_password' => 'Confirm Password',
+
+    //meetings.index.php
+    'my_meetings' => 'My Meetings',
+    'upcoming_meetings' => 'Upcoming Meetings',
+    'create_meeting' => 'Create Meeting',
+
+
+
+    //meetings.create.php
+    'create_new_meeting' => 'Create New Meeting',
+    'title' => 'Title',
+    'scheduled_at' => 'Scheduled At',
+    'location' => 'Location',
+    'attendees' => 'Attendees',
+    'multiple_attendees' => 'Hold down the Ctrl (Windows) or Command (Mac) button to select multiple attendees.',
+
+    //tasks.index.php
+    'group' => 'Group: ',
+    'tasks' => 'Tasks',
+    'create_task' => 'Create New Task',
+    'priority' => 'Priority',
+    'deadline' => 'Deadline',
+    'status' => 'Status',
+    'file' => 'Attched File',
+    'comments' => 'Comments',
+
+    //tasks.create.php
+    'create_new_task' => 'Create New Task',
+    'optional' => 'Optional',
+    'to_do' => 'To Do',
+    'in_progress' => 'In Progress',
+    'completed' => 'Completed',
+    'low' => 'Low',
+    'medium' => 'Medium',
+    'high' => 'High',
+
+
+
+    //tasks.edit.php
+
+
+    //tasks.show.php
+
+
+    
     
     
 ];
