@@ -83,4 +83,9 @@ return [
     'medium' => 'Közepes',
     'high' => 'Magas',
 
+    //tasks.show.php
+    'view_task' => 'Feladat megtekintése',
+    'comment' => 'Hozzászólás',
+    'write_comment' => 'Írj egy kommentet...',
+
 ];

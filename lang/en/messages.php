@@ -90,6 +90,9 @@ return [
 
 
     //tasks.show.php
+    'view_task' => 'View Task',
+    'comment' => 'Comment',
+    'write_comment' => 'Write a comment...',
 
 
     
