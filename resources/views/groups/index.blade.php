@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('My Groups') }}
+            {{ __('messages.groups') }}
         </h2>
     </x-slot>
 
@@ -33,26 +33,26 @@
                                         stroke="#fffffff"
                                         d="M17 15V18M17 21V18M17 18H14M17 18H20"></path>
                                 </svg>
-                                {{ __('Add Group') }}
+                                {{ __('messages.add') }}
                             </button>
                         </a>
                     </div>
                     @endif
 
                     @if ($groups->isEmpty())
-                    <p>{{ __('There are no groups.') }}</p>
+                    <p>{{ __('messages.no_groups') }}</p>
                     @else
                     <!-- Desktop view (table) -->
                     <div class="hidden md:block overflow-x-auto">
                         <table class="table-auto w-full border-collapse border border-gray-300">
                             <thead>
                                 <tr class="bg-gray-200">
-                                    <th class="border border-gray-300 px-4 py-2">{{ __('Name') }}</th>
-                                    <th class="border border-gray-300 px-4 py-2">{{ __('Description') }}</th>
-                                    <th class="border border-gray-300 px-4 py-2">{{ __('Group Leader') }}</th>
-                                    <th class="border border-gray-300 px-4 py-2">{{ __('Members') }}</th>
+                                    <th class="border border-gray-300 px-4 py-2">{{ __('messages.name') }}</th>
+                                    <th class="border border-gray-300 px-4 py-2">{{ __('messages.description') }}</th>
+                                    <th class="border border-gray-300 px-4 py-2">{{ __('messages.group_leader') }}</th>
+                                    <th class="border border-gray-300 px-4 py-2">{{ __('messages.members') }}</th>
                                     @if (auth()->user()->role === 'admin')
-                                    <th class="border border-gray-300 px-4 py-2">{{ __('Edit') }}</th>
+                                    <th class="border border-gray-300 px-4 py-2">{{ __('messages.edit') }}</th>
                                     @endif
                                 </tr>
                             </thead>
@@ -73,14 +73,14 @@
                                     <td class="border border-gray-300 px-4 py-2 text-center">
                                         <a href="{{ route('groups.edit', $group) }}">
                                             <x-primary-button class="mt-2 bg-blue-500 hover:bg-blue-600">
-                                                {{ __('Edit') }}
+                                                {{ __('messages.edit') }}
                                             </x-primary-button>
                                         </a>
                                         <form action="{{ route('groups.destroy', $group) }}" method="POST" class="inline-block">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="delete_button" onclick="return confirmDelete()">
-                                                {{ __('Delete') }}
+                                                {{ __('messages.delete') }}
                                             </button>
                                         </form>
                                     </td>
@@ -102,29 +102,29 @@
                             </div>
                             <div class="space-y-2">
                                 <div>
-                                    <span class="font-medium">{{ __('Description') }}:</span>
+                                    <span class="font-medium">{{ __('messages.description') }}:</span>
                                     <p class="mt-1">{{ $group->description }}</p>
                                 </div>
                                 <div>
-                                    <span class="font-medium">{{ __('Group Leader') }}:</span>
+                                    <span class="font-medium">{{ __('messages.group_leader') }}:</span>
                                     <p class="mt-1">{{ $group->leader->name }}</p>
                                 </div>
                                 <div>
-                                    <span class="font-medium">{{ __('Members') }}:</span>
+                                    <span class="font-medium">{{ __('messages.members') }}:</span>
                                     <p class="mt-1">{{ $group->members->pluck('name')->join(', ') }}</p>
                                 </div>
                                 @if (auth()->user()->role === 'admin')
                                 <div class="flex space-x-2 mt-4">
                                     <a href="{{ route('groups.edit', $group) }}">
                                         <x-primary-button class="bg-blue-500 hover:bg-blue-600">
-                                            {{ __('Edit') }}
+                                            {{ __('messages.edit') }}
                                         </x-primary-button>
                                     </a>
                                     <form action="{{ route('groups.destroy', $group) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="delete_button" onclick="return confirmDelete()">
-                                            {{ __('Delete') }}
+                                            {{ __('messages.delete') }}
                                         </button>
                                     </form>
                                 </div>

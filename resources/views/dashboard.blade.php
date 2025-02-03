@@ -12,7 +12,7 @@
                                 {{ $greeting }}
                             </h2>
                             <br>
-                            <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100">{{ __('Üdvözlünk az alkamazásban!') }}</h1>
+                            <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100">{{ __('messages.welcome') }}</h1>
                         </div>
                     </div>
                 </div>

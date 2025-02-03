@@ -47,21 +47,21 @@
                                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
                                         <th scope="col" class="px-6 py-3">
-                                            {{ __('Name') }}
+                                            {{ __('messages.name') }}
                                         </th>
                                         <th scope="col" class="px-6 py-3">
                                             <div class="flex items-center">
-                                                {{ __('Email') }}
+                                                {{ __('messages.email') }}
                                             </div>
                                         </th>
                                         <th scope="col" class="px-6 py-3">
                                             <div class="flex items-center">
-                                                {{ __('Job Title') }}
+                                                {{ __('messages.job_title') }}
                                             </div>
                                         </th>
                                         <th scope="col" class="px-6 py-3">
                                             <div class="flex items-center">
-                                                {{ __('Actions') }}
+                                                {{ __('messages.actions') }}
                                             </div>
                                         </th>
                                     </tr>

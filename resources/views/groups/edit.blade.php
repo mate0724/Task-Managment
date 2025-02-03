@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Csoport szerkesztése') }}
+            {{ __('messages.edit_group') }}
         </h2>
     </x-slot>
 
@@ -14,19 +14,19 @@
                         @method('PUT')
 
                         <div class="mb-4">
-                            <label for="name" class="block text-gray-700">{{ __('Csoport neve') }}</label>
+                            <label for="name" class="block text-gray-700">{{ __('messages.group_name') }}</label>
                             <input type="text" name="name" id="name" value="{{ $group->name }}" 
                                    class="block w-full mt-1 border-gray-300 rounded-md shadow-sm" required>
                         </div>
 
                         <div class="mb-4">
-                            <label for="description" class="block text-gray-700">{{ __('Leírás') }}</label>
+                            <label for="description" class="block text-gray-700">{{ __('messages.description') }}</label>
                             <textarea name="description" id="description" rows="3" 
                                       class="block w-full mt-1 border-gray-300 rounded-md shadow-sm">{{ $group->description }}</textarea>
                         </div>
 
                         <div class="mb-4">
-                            <label for="leader_id" class="block text-gray-700">{{ __('Csoportvezető') }}</label>
+                            <label for="leader_id" class="block text-gray-700">{{ __('messages.group_leader') }}</label>
                             <select name="leader_id" id="leader_id" 
                                     class="block w-full mt-1 border-gray-300 rounded-md shadow-sm" required>
                                 @foreach ($users as $user)
@@ -39,7 +39,7 @@
                         </div>
 
                         <div class="mb-4">
-                            <label for="members" class="block text-gray-700">{{ __('Csoporttagok') }}</label>
+                            <label for="members" class="block text-gray-700">{{ __('messages.members') }}</label>
                             <select name="members[]" id="members" multiple 
                                     class="block w-full mt-1 border-gray-300 rounded-md shadow-sm">
                                 @foreach ($users as $user)
@@ -53,7 +53,7 @@
 
                         <div class="flex justify-end">
 
-                        <x-primary-button class="mt-2">{{ __('Mentés') }}</x-primary-button>
+                        <x-primary-button class="mt-2">{{ __('messages.save') }}</x-primary-button>
                         </div>
                     </form>
                 </div>
