@@ -3,7 +3,7 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             Csoport: {{ $group->name }} - Feladatok
         </h2>
-        
+
     </x-slot>
 
     <div class="py-12">
@@ -11,9 +11,12 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     @if (auth()->id() === $group->leader_id)
-                    <a href="{{ route('groups.tasks.create', $group) }}" class="btn btn-primary mb-4">Új feladat létrehozása</a>
+                    <x-primary-button class="mt-2 flex items-center justify-center h-10">
+                        <a href="{{ route('groups.tasks.create', $group) }}" class="text-center">Új feladat létrehozása</a>
+                    </x-primary-button>
+                    
                     @endif
-
+                    
                     <ul class="list-group">
                         @foreach ($tasks as $task)
                         <li class="list-group-item mb-3">

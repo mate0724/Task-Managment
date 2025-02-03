@@ -38,53 +38,101 @@
                         </a>
                     </div>
                     @endif
+
                     @if ($groups->isEmpty())
                     <p>{{ __('There are no groups.') }}</p>
                     @else
-                    <table class="table-auto w-full border-collapse border border-gray-300">
-                        <thead>
-                            <tr>
-                                <th class="border border-gray-300 px-4 py-2">{{ __('Name') }}</th>
-                                <th class="border border-gray-300 px-4 py-2">{{ __('Description') }}</th>
-                                <th class="border border-gray-300 px-4 py-2">{{ __('Group Leader') }}</th>
-                                <th class="border border-gray-300 px-4 py-2">{{ __('Members') }}</th>
+                    <!-- Desktop view (table) -->
+                    <div class="hidden md:block overflow-x-auto">
+                        <table class="table-auto w-full border-collapse border border-gray-300">
+                            <thead>
+                                <tr class="bg-gray-200">
+                                    <th class="border border-gray-300 px-4 py-2">{{ __('Name') }}</th>
+                                    <th class="border border-gray-300 px-4 py-2">{{ __('Description') }}</th>
+                                    <th class="border border-gray-300 px-4 py-2">{{ __('Group Leader') }}</th>
+                                    <th class="border border-gray-300 px-4 py-2">{{ __('Members') }}</th>
+                                    @if (auth()->user()->role === 'admin')
+                                    <th class="border border-gray-300 px-4 py-2">{{ __('Edit') }}</th>
+                                    @endif
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($groups as $group)
+                                <tr>
+                                    <td class="border border-gray-300 px-4 py-2 text-center">
+                                        <a href="{{ route('tasks.index', ['group' => $group->id]) }}" class="text-blue-500 hover:underline">
+                                            {{ $group->name }}
+                                        </a>
+                                    </td>
+                                    <td class="border border-gray-300 px-4 py-2 text-center">{{ $group->description }}</td>
+                                    <td class="border border-gray-300 px-4 py-2 text-center">{{ $group->leader->name }}</td>
+                                    <td class="border border-gray-300 px-4 py-2 text-center">
+                                        {{ $group->members->pluck('name')->join(', ') }}
+                                    </td>
+                                    @if (auth()->user()->role === 'admin')
+                                    <td class="border border-gray-300 px-4 py-2 text-center">
+                                        <a href="{{ route('groups.edit', $group) }}">
+                                            <x-primary-button class="mt-2 bg-blue-500 hover:bg-blue-600">
+                                                {{ __('Edit') }}
+                                            </x-primary-button>
+                                        </a>
+                                        <form action="{{ route('groups.destroy', $group) }}" method="POST" class="inline-block">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="delete_button" onclick="return confirmDelete()">
+                                                {{ __('Delete') }}
+                                            </button>
+                                        </form>
+                                    </td>
+                                    @endif
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Mobile view (cards) -->
+                    <div class="md:hidden space-y-4">
+                        @foreach ($groups as $group)
+                        <div class="bg-white rounded-lg shadow-md p-4 border border-gray-200">
+                            <div class="mb-2">
+                                <a href="{{ route('tasks.index', ['group' => $group->id]) }}" class="text-blue-500 hover:underline text-lg font-semibold">
+                                    {{ $group->name }}
+                                </a>
+                            </div>
+                            <div class="space-y-2">
+                                <div>
+                                    <span class="font-medium">{{ __('Description') }}:</span>
+                                    <p class="mt-1">{{ $group->description }}</p>
+                                </div>
+                                <div>
+                                    <span class="font-medium">{{ __('Group Leader') }}:</span>
+                                    <p class="mt-1">{{ $group->leader->name }}</p>
+                                </div>
+                                <div>
+                                    <span class="font-medium">{{ __('Members') }}:</span>
+                                    <p class="mt-1">{{ $group->members->pluck('name')->join(', ') }}</p>
+                                </div>
                                 @if (auth()->user()->role === 'admin')
-                                <th class="border border-gray-300 px-4 py-2">{{ __('Edit') }}</th>
-                                @endif
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($groups as $group)
-                            <tr>
-                                <td class="border border-gray-300 px-4 py-2 text-center">
-                                    <a href="{{ route('tasks.index', ['group' => $group->id]) }}" class="text-blue-500 hover:underline">
-                                        {{ $group->name }}
+                                <div class="flex space-x-2 mt-4">
+                                    <a href="{{ route('groups.edit', $group) }}">
+                                        <x-primary-button class="bg-blue-500 hover:bg-blue-600">
+                                            {{ __('Edit') }}
+                                        </x-primary-button>
                                     </a>
-                                </td>
-                                <td class="border border-gray-300 px-4 py-2 text-center">{{ $group->description }}</td>
-                                <td class="border border-gray-300 px-4 py-2 text-center">{{ $group->leader->name }}</td>
-                                <td class="border border-gray-300 px-4 py-2 text-center">
-                                    <!-- Tagok neveinek felsorolása, vesszővel elválasztva -->
-                                    {{ $group->members->pluck('name')->join(', ') }}
-                                </td>
-                                @if (auth()->user()->role === 'admin')
-                                <td class="border border-gray-300 px-4 py-2 text-center">
-                                    <a href="{{ route('groups.edit', $group) }}" <x-primary-button class="mt-2 bg-blue-500 hover:bg-blue-600">
-                                        {{ __('Edit') }}</x-primary-button>
-                                    </a>
-                                    <form action="{{ route('groups.destroy', $group) }}" method="POST" class="inline-block">
+                                    <form action="{{ route('groups.destroy', $group) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="delete_button" onclick="return confirmDelete()">
                                             {{ __('Delete') }}
                                         </button>
                                     </form>
-                                </td>
+                                </div>
                                 @endif
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
                     @endif
                 </div>
             </div>
