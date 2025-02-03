@@ -77,6 +77,7 @@ return [
     //tasks.create.php
     'create_new_task' => 'Új feladat létrehozása',
     'optional' => 'Opcionális',
+    'to_do' => 'Teendő',
     'in_progress' => 'Folyamatban',
     'completed' => 'Befejezett',
     'low' => 'Alacsony',
