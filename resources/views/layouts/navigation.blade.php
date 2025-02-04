@@ -86,23 +86,24 @@
 
                     <x-slot name="content">
                         <x-dropdown-link :href="url('locale/en')" class="flex items-center space-x-2">
-                            <img src="{{ asset('images/flags/en.png') }}" alt="English" class="inline w-5 h-5 rounded-full">
+                            <img src="{{ asset('images/flags/en.png') }}" alt="English" style="margin-right: 10px;" class="inline w-5 h-5 rounded-full">
+                            
                             {{ __('messages.english') }}
                         </x-dropdown-link>
                         <x-dropdown-link :href="url('locale/es')" class="flex items-center space-x-2">
-                            <img src="{{ asset('images/flags/es.png') }}" alt="English" class="inline w-5 h-5 rounded-full">
+                            <img src="{{ asset('images/flags/es.png') }}" alt="English" style="margin-right: 10px;" class="inline w-5 h-5 rounded-full">
                             {{ __('messages.spanish') }}
                         </x-dropdown-link>
                         <x-dropdown-link :href="url('locale/fr')" class="flex items-center space-x-2">
-                            <img src="{{ asset('images/flags/fr.png') }}" alt="English" class="inline w-5 h-5 rounded-full">
+                            <img src="{{ asset('images/flags/fr.png') }}" alt="English"  style="margin-right: 10px;" class="inline w-5 h-5 rounded-full">
                             {{ __('messages.french') }}
                         </x-dropdown-link>
                         <x-dropdown-link :href="url('locale/de')" class="flex items-center space-x-2">
-                            <img src="{{ asset('images/flags/de.png') }}" alt="English" class="inline w-5 h-5 rounded-full">
+                            <img src="{{ asset('images/flags/de.png') }}" alt="English" style="margin-right: 10px;" class="inline w-5 h-5 rounded-full">
                             {{ __('messages.german') }}
                         </x-dropdown-link>
                         <x-dropdown-link :href="url('locale/hu')" class="flex items-center space-x-2">
-                            <img src="{{ asset('images/flags/hu.png') }}" alt="English" class="inline w-5 h-5 rounded-full">
+                            <img src="{{ asset('images/flags/hu.png') }}" alt="English" style="margin-right: 10px;" class="inline w-5 h-5 rounded-full">
                             {{ __('messages.hungarian') }}
                         </x-dropdown-link>
                     </x-slot>
