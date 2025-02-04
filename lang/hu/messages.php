@@ -99,4 +99,12 @@ return [
     'cancel' => 'Mégse',
     'upload_file' => 'Fájl feltöltése',
 
+
+    'language' => 'Nyelvek',
+    'english' => 'Angol',
+    'spanish' => 'Spanyol',
+    'french' => 'Francia',
+    'german' => 'Német',
+    'hungarian' => 'Magyar',
+
 ];

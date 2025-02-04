@@ -94,4 +94,11 @@ return [
     'home' => 'Inicio',
     'users' => 'Usuarios',
     'meetings' => 'Reuniones',
+
+    'language' => 'Idioma',
+    'english' => 'Inglés',
+    'spanish' => 'Español',
+    'french' => 'Francés',
+    'german' => 'Alemán',
+    'hungarian' => 'Húngaro',
 ];

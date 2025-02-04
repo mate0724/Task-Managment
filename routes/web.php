@@ -4,9 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GroupController;
+use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
@@ -27,7 +29,7 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['au
 
 
 
-Route::get('/', function(){
+Route::get('/', function () {
     return redirect('/login');
 });
 
@@ -72,4 +74,14 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
-require __DIR__.'/auth.php';
+
+
+// Route::get('set_language/{lang}', function ($lang) {
+//     session(['app_locale' => $lang]);
+//     return redirect()->back();
+// })->name('set_language');
+
+Route::get('locale/{lang}', [LocaleController::class, 'setLocale']);
+
+
+require __DIR__ . '/auth.php';

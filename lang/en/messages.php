@@ -103,7 +103,12 @@ return [
     
 
 
-    
+    'language' => 'Languages',
+    'english' => 'English',
+    'spanish' => 'Spanish',
+    'french' => 'French',
+    'german' => 'German',
+    'hungarian' => 'Hungarian',
     
     
 ];
