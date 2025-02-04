@@ -59,11 +59,13 @@
                                                 {{ __('messages.job_title') }}
                                             </div>
                                         </th>
+                                        @if (auth()->user()->role === 'admin')
                                         <th scope="col" class="px-6 py-3">
                                             <div class="flex items-center">
                                                 {{ __('messages.actions') }}
                                             </div>
                                         </th>
+                                        @endif
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -78,6 +80,7 @@
                                         <td class="px-6 py-4">
                                             {{ $user->job_title }}
                                         </td>
+                                        @if (auth()->user()->role === 'admin')
                                         <td class="px-4 py-2">
                                             <a href="{{ route('users.edit', $user->id) }}">
                                                 <x-primary-button class="mt-2 bg-blue-500 hover:bg-blue-600">{{ __('messages.edit') }}</x-primary-button>
@@ -88,6 +91,7 @@
                                                 <button class="delete_button">{{ __('messages.delete') }}</button>
                                             </form>
                                         </td>
+                                        @endif
                                     </tr>
                                     @endforeach
                                 </tbody>

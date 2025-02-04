@@ -10,7 +10,7 @@ return [
     'search' => 'Keresés',
     'export' => 'Exportálás',
     'add_user' => 'Felhasználó hozzáadása',
-    'users_list' => 'Felhasználók listája',
+    'users_list' => 'Munkatársak listája',
 
     //dashboard.blade.php
     'welcome' => 'Üdvözlünk az alkalmazásban!',
