@@ -17,7 +17,10 @@ class TaskController extends Controller
             abort(403, 'Nincs jogosultságod a csoporthoz!');
         }
 
-        $tasks = $group->tasks()->with('comments.user')->get();
+        $tasks = $group->tasks()
+            ->with('comments.user')
+            ->orderByRaw("CASE WHEN due_date IS NULL THEN 1 ELSE 0 END, due_date ASC")
+            ->get();
         return view('tasks.index', compact('group', 'tasks'));
     }
 
