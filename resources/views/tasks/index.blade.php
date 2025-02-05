@@ -17,6 +17,10 @@
                     
                     @endif
                     
+                    @if ($tasks->isEmpty())
+                    <p>{{ __('messages.no_tasks') }}</p>
+                    @endif
+
                     <ul class="list-group">
                         @foreach ($tasks as $task)
                         <li class="list-group-item mb-3">

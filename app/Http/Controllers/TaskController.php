@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Task;
 use App\Models\Group;
+use Illuminate\Http\Request;
+use App\Notifications\TaskCreated;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Notification;
 
 
 class TaskController extends Controller
@@ -58,6 +60,9 @@ class TaskController extends Controller
         $group->tasks()->create(array_merge($validated, [
             'file_path' => $filePath,
         ]));
+
+        // $members = $group->members; 
+        // Notification::send($members, new TaskCreated($task));
 
         return redirect()->route('groups.tasks.index', $group)
             ->with('success', 'Feladat sikeresen létrehozva!');

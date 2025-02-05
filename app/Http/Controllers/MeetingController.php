@@ -6,6 +6,8 @@ use App\Models\User;
 use App\Models\Meeting;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Notifications\MeetingCreated;
+use Illuminate\Support\Facades\Notification;
 
 class MeetingController extends Controller
 {
@@ -13,8 +15,7 @@ class MeetingController extends Controller
     {
         if (auth()->user()->role === 'admin') {
             $meetings = Meeting::orderBy('scheduled_at', 'asc')->get();
-        }
-        else {
+        } else {
             $meetings = Meeting::with('attendees')
                 ->whereHas('attendees', function ($query) {
                     $query->where('user_id', auth()->id());
@@ -55,6 +56,9 @@ class MeetingController extends Controller
             //$meeting->attendees()->sync($validated['attendees']);
             $meeting->attendees()->attach($validated['attendees']);
         }
+
+        $attendees = $meeting->attendees;
+        Notification::send($attendees, new MeetingCreated($meeting));
 
         return redirect()->route('meetings.index')->with('success', 'Meeting created successfully.');
     }

@@ -15,7 +15,7 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                    <img src="{{ asset('images/home.png') }}" alt="Icon" style="margin-right: 10px;" class="inline-block w-5 h-5"> 
+                        <img src="{{ asset('images/home.png') }}" alt="Icon" style="margin-right: 10px;" class="inline-block w-5 h-5">
 
                         {{ __('messages.home') }}
                     </x-nav-link>
@@ -23,8 +23,8 @@
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('groups.index') " :active="request()->routeIs('dashboard')">
-                    <img src="{{ asset('images/group.png') }}" alt="Icon" style="margin-right: 10px;" class="inline-block w-5 h-5"> 
-                    {{ __('messages.groups') }}
+                        <img src="{{ asset('images/group.png') }}" alt="Icon" style="margin-right: 10px;" class="inline-block w-5 h-5">
+                        {{ __('messages.groups') }}
                     </x-nav-link>
                 </div>
 
@@ -44,8 +44,8 @@
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('meetings.index') " :active="request()->routeIs('dashboard')">
-                    <img src="{{ asset('images/meeting.png') }}" alt="Icon" style="margin-right: 10px;" class="inline-block w-5 h-5"> 
-                    {{ __('messages.meetings') }}
+                        <img src="{{ asset('images/meeting.png') }}" alt="Icon" style="margin-right: 10px;" class="inline-block w-5 h-5">
+                        {{ __('messages.meetings') }}
                     </x-nav-link>
                 </div>
 
@@ -63,19 +63,45 @@
             <div class="hidden sm:flex sm:items-center sm:ms-6">
 
 
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('notifications.index') " :active="request()->routeIs('dashboard')">
-                        <i class="fa fa-bell" style="margin-right: 10px;" class="inline-block w-5 h-5"></i> {{ __('Értesítések') }} 
-                    </x-nav-link>
-                </div>
+
+                <x-dropdown align="right" width="48">
+                    <x-slot name="trigger">
+                        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
+                            <i class="fa fa-bell"></i>
+                            @if (auth()->user()->unreadNotifications->count() > 0)
+                            <span class="badge bg-danger">{{ auth()->user()->unreadNotifications->count() }}</span>
+                            @endif
+                        </button>
+                    </x-slot>
+
+                    <x-slot name="content">
+                        @if (auth()->user()->unreadNotifications->count())
+                        <div class="px-4 py-2 text-right">
+                            <a href="{{ route('notifications.markAsRead') }}" class="btn btn-primary btn-sm">{{ __('Mindet olvasottnak jelöl') }}</a>
+                        </div>
+                        @endif
+
+                        @foreach (auth()->user()->unreadNotifications as $notification)
+                        <x-dropdown-link :href="$notification->data['url']" class="text-danger">
+                            {{ $notification->data['message'] }}
+                        </x-dropdown-link>
+                        @endforeach
+
+                        @foreach (auth()->user()->readNotifications as $notification)
+                        <x-dropdown-link :href="$notification->data['url']" class="text-secondary">
+                            {{ $notification->data['message'] }}
+                        </x-dropdown-link>
+                        @endforeach
+                    </x-slot>
+                </x-dropdown>
 
 
                 <!-- Nyelvválasztó dropdown -->
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
-                        <img src="{{ asset('images/languages.png') }}" alt="Icon" style="margin-right: 10px;" class="inline-block w-6 h-6"> 
-                        <div>{{ __('messages.language') }}</div>
+                            <img src="{{ asset('images/languages.png') }}" alt="Icon" style="margin-right: 10px;" class="inline-block w-6 h-6">
+                            <div>{{ __('messages.language') }}</div>
                             <div class="ms-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -87,7 +113,7 @@
                     <x-slot name="content">
                         <x-dropdown-link :href="url('locale/en')" class="flex items-center space-x-2">
                             <img src="{{ asset('images/flags/en.png') }}" alt="English" style="margin-right: 10px;" class="inline w-5 h-5 rounded-full">
-                            
+
                             {{ __('messages.english') }}
                         </x-dropdown-link>
                         <x-dropdown-link :href="url('locale/es')" class="flex items-center space-x-2">
@@ -95,7 +121,7 @@
                             {{ __('messages.spanish') }}
                         </x-dropdown-link>
                         <x-dropdown-link :href="url('locale/fr')" class="flex items-center space-x-2">
-                            <img src="{{ asset('images/flags/fr.png') }}" alt="English"  style="margin-right: 10px;" class="inline w-5 h-5 rounded-full">
+                            <img src="{{ asset('images/flags/fr.png') }}" alt="English" style="margin-right: 10px;" class="inline w-5 h-5 rounded-full">
                             {{ __('messages.french') }}
                         </x-dropdown-link>
                         <x-dropdown-link :href="url('locale/de')" class="flex items-center space-x-2">

@@ -10,6 +10,7 @@ use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\NotificationController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -73,15 +74,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/meetings', [MeetingController::class, 'store'])->name('meetings.store');
 });
 
-
-
-
-// Route::get('set_language/{lang}', function ($lang) {
-//     session(['app_locale' => $lang]);
-//     return redirect()->back();
-// })->name('set_language');
-
 Route::get('locale/{lang}', [LocaleController::class, 'setLocale']);
 
+Route::get('/notifications/mark-as-read', [NotificationController::class, 'markAsRead'])->name('notifications.markAsRead');
+Route::get('/notifications', [NotificationController::class, 'index'])->name('notifications.index');
 
 require __DIR__ . '/auth.php';

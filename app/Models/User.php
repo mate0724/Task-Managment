@@ -59,6 +59,8 @@ class User extends Authenticatable
         return $this->hasMany(Meeting::class, 'created_by');
     }
 
+    
+
 
     /**
      * The attributes that should be hidden for serialization.

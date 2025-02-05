@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Group;
 use App\Models\User;
+use App\Models\Group;
 use Illuminate\Http\Request;
+use App\Notifications\GroupCreated;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Notification;
 use phpDocumentor\Reflection\Types\Nullable;
 
 class GroupController extends Controller
@@ -63,6 +65,10 @@ class GroupController extends Controller
         if (isset($validated['members'])) {
             $group->members()->sync($validated['members']);
         }
+
+        $members = $group->members; 
+        Notification::send($members, new GroupCreated($group));
+
 
         return redirect()->route('groups.index')->with('success', 'Group created successfully.');
     }
