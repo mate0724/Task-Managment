@@ -73,6 +73,7 @@ return [
     'status' => 'Status',
     'file' => 'Attched File',
     'comments' => 'Comments',
+    'no_tasks' => 'There are no tasks yet.',
 
     //tasks.create.php
     'create_new_task' => 'Create New Task',

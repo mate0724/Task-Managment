@@ -101,4 +101,6 @@ return [
     'french' => 'Français',
     'german' => 'Allemand',
     'hungarian' => 'Hongrois',
+
+    'no_tasks' => 'Il n\'y a pas encore de tâches.',
 ];

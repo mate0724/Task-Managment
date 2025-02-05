@@ -29,6 +29,7 @@ return [
     'description' => 'Leírás',
     'group_leader' => 'Csoportvezető',
     'members' => 'Tagok',
+    'no_tasks' => 'Nincsenek még feladataid.',
 
 
     //groups.create.php
