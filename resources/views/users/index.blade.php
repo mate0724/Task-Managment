@@ -105,6 +105,7 @@
                             <p><strong>{{ __('Name:') }}</strong> {{ $user->name }}</p>
                             <p><strong>{{ __('Email:') }}</strong> {{ $user->email }}</p>
                             <p><strong>{{ __('Job Title:') }}</strong> {{ $user->job_title }}</p>
+                            @if (auth()->user()->role === 'admin')
                             <div class="mt-2">
                                 <a href="{{ route('users.edit', $user->id) }}">
                                     <x-primary-button class="mt-2 bg-blue-500 hover:bg-blue-600">{{ __('Edit') }}</x-primary-button>
@@ -115,6 +116,7 @@
                                     <button class="delete_button">{{ __('Delete') }}</button>
                                 </form>
                             </div>
+                            @endif
                         </div>
                         @endforeach
                     </div>
