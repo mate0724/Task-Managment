@@ -15,7 +15,7 @@ class TaskController extends Controller
 {
     public function index(Group $group)
     {
-        if (!$group->members->contains(auth()->id()) && $group->leader_id !== auth()->id()) {
+        if (!$group->members->contains(auth()->id()) && $group->leader_id !== auth()->id() && auth()->user()->role !== 'admin') {
             abort(403, 'Nincs jogosultságod a csoporthoz!');
         }
 

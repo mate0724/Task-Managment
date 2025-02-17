@@ -186,23 +186,27 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            <img src="{{ asset('images/home.png') }}" alt="Icon" style="margin-right: 10px;" class="inline-block w-5 h-5">
                 {{ __('messages.home') }}
             </x-responsive-nav-link>
         </div>
 
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('groups.index')" :active="request()->routeIs('dashboard')">
+            <img src="{{ asset('images/group.png') }}" alt="Icon" style="margin-right: 10px;" class="inline-block w-5 h-5">
                 {{ __('messages.groups') }}
             </x-responsive-nav-link>
         </div>
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('users.index')" :active="request()->routeIs('dashboard')">
+            <img src="{{ asset('images/user.png') }}" alt="Icon" style="margin-right: 10px;" class="inline-block w-5 h-5">
                 {{ __('messages.users') }}
             </x-responsive-nav-link>
         </div>
 
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('meetings.index')" :active="request()->routeIs('dashboard')">
+            <img src="{{ asset('images/meeting.png') }}" alt="Icon" style="margin-right: 10px;" class="inline-block w-5 h-5">
                 {{ __('messages.meetings') }}
             </x-responsive-nav-link>
         </div>
