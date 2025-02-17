@@ -145,7 +145,7 @@
     </div>
 
     <style>
-        /* From Uiverse.io by virus231 */
+        
         .delete_button {
             background: linear-gradient(140.14deg, #ec540e 15.05%, #d6361f 114.99%) padding-box,
                 linear-gradient(142.51deg, #ff9465 8.65%, #af1905 88.82%) border-box;
