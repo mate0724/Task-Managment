@@ -84,6 +84,7 @@ return [
     'low' => 'Alacsony',
     'medium' => 'Közepes',
     'high' => 'Magas',
+    'all' => 'Összes',
 
     //tasks.show.php
     'view_task' => 'Feladat megtekintése',

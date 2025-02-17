@@ -84,6 +84,7 @@ return [
     'low' => 'Low',
     'medium' => 'Medium',
     'high' => 'High',
+    'all' => 'All',
 
 
 

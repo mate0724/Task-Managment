@@ -103,4 +103,6 @@ return [
     'hungarian' => 'Húngaro',
 
     'no_tasks' => 'No hay tareas todavía.',
+
+    'all' => 'Todos',
 ];

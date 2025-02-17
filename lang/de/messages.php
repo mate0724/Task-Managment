@@ -103,4 +103,8 @@ return [
     'german' => 'Deutsch',
     'hungarian' => 'Ungarisch',
 
-'no_tasks' => 'Es sind noch keine Aufgaben vorhanden.',];
+    'all' => 'Alle',
+
+    'no_tasks' => 'Es sind noch keine Aufgaben vorhanden.',
+
+];
