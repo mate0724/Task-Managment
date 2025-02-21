@@ -61,10 +61,9 @@ class TaskController extends Controller
             'file_path' => $filePath,
         ]));
 
-        // $members = $group->members; 
-        // Notification::send($members, new TaskCreated($task));
+        
 
-        return redirect()->route('groups.tasks.index', $group)
+        return redirect()->route('tasks.index', $group)
             ->with('success', 'Feladat sikeresen létrehozva!');
     }
 
@@ -120,7 +119,7 @@ class TaskController extends Controller
 
         $task->delete();
 
-        return redirect()->route('groups.tasks.index', $group)
+        return redirect()->route('tasks.index', $group)
             ->with('success', 'Feladat sikeresen törölve.');
     }
 

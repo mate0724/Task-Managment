@@ -21,19 +21,19 @@
                             <div class="flex flex-wrap gap-3">
                                 <button type="button" id="filter-low" class="filter-btn flex items-center px-4 py-2 border rounded-lg shadow-sm text-sm font-medium bg-white hover:bg-gray-50 transition-all duration-200 gap-3">
                                     <img src="{{ asset('images/low-priority.png') }}" alt="Alacsony" class="w-5 h-5 mr-2">
-                                    {{ __('Alacsony') }}
+                                    {{ __('messages.low') }}
                                 </button>
                                 <button type="button" id="filter-medium" class="filter-btn flex items-center px-4 py-2 border rounded-lg shadow-sm text-sm font-medium bg-white hover:bg-gray-50 transition-all duration-200 gap-3">
                                     <img src="{{ asset('images/medium-priority.png') }}" alt="Közepes" class="w-5 h-5 mr-1">
-                                    {{ __('Közepes') }}
+                                    {{ __('messages.medium') }}
                                 </button>
                                 <button type="button" id="filter-high" class="filter-btn flex items-center px-4 py-2 border rounded-lg shadow-sm text-sm font-medium bg-white hover:bg-gray-50 transition-all duration-200 gap-3">
                                     <img src="{{ asset('images/high-priority.png') }}" alt="Magas" class="w-5 h-5 mr-1">
-                                    {{ __('Magas') }}
+                                    {{ __('messages.high') }}
                                 </button>
                                 <button type="button" id="filter-all" class="filter-btn flex items-center px-4 py-2 border rounded-lg shadow-sm text-sm font-medium bg-white hover:bg-gray-50 transition-all duration-200 gap-3">
                                     <img src="{{ asset('images/all.png') }}" alt="Közepes" class="w-5 h-5 mr-1">
-                                    {{ __('Összes') }}
+                                    {{ __('messages.all') }}
                                 </button>
                             </div>
 
