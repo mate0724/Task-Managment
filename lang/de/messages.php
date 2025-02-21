@@ -126,4 +126,6 @@ return [
     'new_password' => 'Neues Passwort',
     'saved' => 'Gespeichert.',
 
+    'welcome_groups' => 'Willkommen in der Gruppenverwaltungsoberfläche! Hier sehen Sie alle Gruppen, in denen Sie Mitglied sind. In der Tabelle finden Sie Ihre Partner, den Gruppenleiter und alle wichtigen Informationen. Klicken Sie einfach auf den Namen der Gruppe, um die zugehörigen Aufgaben anzuzeigen.',
+
 ];

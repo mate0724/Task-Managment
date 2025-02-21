@@ -129,5 +129,7 @@ return [
     'new_password' => 'Új jelszó',
     'saved' => 'Mentve.',
 
+    'welcome_groups' => 'Üdvözlünk a Csoportkezelő felületen! Itt láthatod az összes csoportodat, amelyeknek tagja vagy. A táblázatban megtalálod a partnereidet, a csoport vezetőjét és minden fontos információt. Kattints egyszerűen a csoport nevére a hozzá tartozó feladatok megtekintéséhez.'
+
 
 ];

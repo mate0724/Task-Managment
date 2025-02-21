@@ -125,4 +125,6 @@ return [
     'new_password' => 'Nueva Contraseña',
     'saved' => 'Guardado.',
 
+    'welcome_groups' => 'Bienvenido a la interfaz de Gestión de Grupos! Aquí puedes ver todos los grupos de los que eres miembro. En la tabla encontrarás a tus compañeros, al líder del grupo y toda la información importante. Simplemente haz clic en el nombre del grupo para ver las tareas asociadas.',
+
 ];

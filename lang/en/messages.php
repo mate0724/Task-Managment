@@ -28,7 +28,7 @@ return [
     'description' => 'Description',
     'group_leader' => 'Group Leader',
     'members' => 'Members',
-    
+
     //groups.create.php
     'create_group' => 'Create Group',
     'group_name' => 'Group Name',
@@ -102,7 +102,7 @@ return [
     'home' => 'Home',
     'users' => 'Users',
     'meetings' => 'Meetings',
-    
+
 
 
     'language' => 'Languages',
@@ -131,8 +131,8 @@ return [
     'new_password' => 'New Password',
     'saved' => 'Saved.',
 
+    'welcome_groups' => 'Welcome to the Group Management interface! Here you can see all the groups you are a member of. In the table, you will find your partners, the group leader, and all important information. Simply click on the group name to view the associated tasks.',
 
 
-    
-    
+
 ];

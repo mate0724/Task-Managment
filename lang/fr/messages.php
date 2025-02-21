@@ -125,6 +125,6 @@ return [
     'new_password' => 'Nouveau mot de passe',
     'saved' => 'Enregistré.',
 
-    
+    'welcome_groups' => 'Bienvenue dans l\'interface de gestion des groupes ! Ici, vous pouvez voir tous les groupes dont vous êtes membre. Dans le tableau, vous trouverez vos partenaires, le chef du groupe et toutes les informations importantes. Cliquez simplement sur le nom du groupe pour voir les tâches associées.',
 
 ];
