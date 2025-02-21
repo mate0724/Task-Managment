@@ -107,4 +107,23 @@ return [
 
     'no_tasks' => 'Es sind noch keine Aufgaben vorhanden.',
 
+    //profil
+    'profile' => 'Profil',
+    'profile_information' => 'Profilinformationen',
+    'acc_update' => 'Aktualisieren Sie Ihre Kontoprofilinformationen und E-Mail-Adresse.',
+    'unverifed' => 'Ihre E-Mail-Adresse ist nicht verifiziert.',
+    'verification' => 'Klicken Sie hier, um die Verifizierungs-E-Mail erneut zu senden.',
+    'new_verifications' => 'Ein neuer Verifizierungslink wurde an Ihre E-Mail-Adresse gesendet.',
+
+    'acc_delete' => 'Konto löschen',
+    'del_warning' => 'Sobald Ihr Konto gelöscht ist, werden alle zugehörigen Ressourcen und Daten dauerhaft gelöscht. Laden Sie vor dem Löschen Ihres Kontos bitte alle Daten oder Informationen herunter, die Sie behalten möchten.',
+    'del_conf' => 'Sind Sie sicher, dass Sie Ihr Konto löschen möchten?',
+    'password_confirm_warning' => 'Sobald Ihr Konto gelöscht ist, werden alle zugehörigen Ressourcen und Daten dauerhaft gelöscht. Bitte geben Sie Ihr Passwort ein, um zu bestätigen, dass Sie Ihr Konto dauerhaft löschen möchten.',
+
+    'update_password' => 'Passwort aktualisieren',
+    'password_warning' => 'Stellen Sie sicher, dass Ihr Konto ein langes, zufälliges Passwort verwendet, um sicher zu bleiben.',
+    'current_password' => 'Aktuelles Passwort',
+    'new_password' => 'Neues Passwort',
+    'saved' => 'Gespeichert.',
+
 ];

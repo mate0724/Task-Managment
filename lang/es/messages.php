@@ -105,4 +105,24 @@ return [
     'no_tasks' => 'No hay tareas todavía.',
 
     'all' => 'Todos',
+
+    //profil
+    'profile' => 'Perfil',
+    'profile_information' => 'Información del Perfil',
+    'acc_update' => 'Actualice la información de su perfil de cuenta y dirección de correo electrónico.',
+    'unverifed' => 'Su dirección de correo electrónico no está verificada.',
+    'verification' => 'Haga clic aquí para reenviar el correo electrónico de verificación.',
+    'new_verifications' => 'Se ha enviado un nuevo enlace de verificación a su dirección de correo electrónico.',
+
+    'acc_delete' => 'Eliminar Cuenta',
+    'del_warning' => 'Una vez que se elimine su cuenta, todos sus recursos y datos se eliminarán permanentemente. Antes de eliminar su cuenta, descargue cualquier dato o información que desee conservar.',
+    'del_conf' => '¿Está seguro de que desea eliminar su cuenta?',
+    'password_confirm_warning' => 'Una vez que se elimine su cuenta, todos sus recursos y datos se eliminarán permanentemente. Ingrese su contraseña para confirmar que desea eliminar permanentemente su cuenta.',
+
+    'update_password' => 'Actualizar Contraseña',
+    'password_warning' => 'Asegúrese de que su cuenta esté utilizando una contraseña larga y aleatoria para mantenerse segura.',
+    'current_password' => 'Contraseña Actual',
+    'new_password' => 'Nueva Contraseña',
+    'saved' => 'Guardado.',
+
 ];

@@ -111,6 +111,28 @@ return [
     'french' => 'French',
     'german' => 'German',
     'hungarian' => 'Hungarian',
+
+    //profil
+    'profile' => 'Profile',
+    'profile_information' => 'Profile Information',
+    'acc_update' => 'Update your account profile information and email address.',
+    'unverifed' => 'Your email address is unverified.',
+    'verification' => 'Click here to re-send the verification email.',
+    'new_verifications' => 'A new verification link has been sent to your email address.',
+
+    'acc_delete' => 'Delete Account',
+    'del_warning' => 'Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.',
+    'del_conf' => 'Are you sure you want to delete your account?',
+    'password_confirm_warning' => 'Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.',
+
+    'update_password' => 'Update Password',
+    'password_warning' => 'Ensure your account is using a long, random password to stay secure.',
+    'current_password' => 'Current Password',
+    'new_password' => 'New Password',
+    'saved' => 'Saved.',
+
+
+
     
     
 ];

@@ -105,4 +105,26 @@ return [
     'no_tasks' => 'Il n\'y a pas encore de tâches.',
 
     'all' => 'Tous',
+
+    //profil
+    'profile' => 'Profil',
+    'profile_information' => 'Informations de Profil',
+    'acc_update' => 'Mettez à jour les informations de votre profil et votre adresse e-mail.',
+    'unverifed' => 'Votre adresse e-mail n\'est pas vérifiée.',
+    'verification' => 'Cliquez ici pour renvoyer l\'e-mail de vérification.',
+    'new_verifications' => 'Un nouveau lien de vérification a été envoyé à votre adresse e-mail.',
+
+    'acc_delete' => 'Supprimer le Compte',
+    'del_warning' => 'Une fois votre compte supprimé, toutes ses ressources et données seront définitivement supprimées. Avant de supprimer votre compte, veuillez télécharger toutes les données ou informations que vous souhaitez conserver.',
+    'del_conf' => 'Êtes-vous sûr de vouloir supprimer votre compte ?',
+    'password_confirm_warning' => 'Une fois votre compte supprimé, toutes ses ressources et données seront définitivement supprimées. Veuillez saisir votre mot de passe pour confirmer que vous souhaitez supprimer définitivement votre compte.',
+
+    'update_password' => 'Mettre à jour le mot de passe',
+    'password_warning' => 'Assurez-vous que votre compte utilise un mot de passe long et aléatoire pour rester sécurisé.',
+    'current_password' => 'Mot de passe actuel',
+    'new_password' => 'Nouveau mot de passe',
+    'saved' => 'Enregistré.',
+
+    
+
 ];

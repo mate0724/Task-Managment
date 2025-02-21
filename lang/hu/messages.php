@@ -109,4 +109,25 @@ return [
     'german' => 'Német',
     'hungarian' => 'Magyar',
 
+    //profil
+    'profile' => 'Profil',
+    'profile_information' => 'Profil információk',
+    'acc_update' => 'Frissítse fiókja adatait és e-mail címét.',
+    'unverifed' => 'Az e-mail címe nincs megerősítve.',
+    'verification' => 'Kattintson ide a megerősítő e-mail újraküldéséhez.',
+    'new_verifications' => 'Új megerősítő hivatkozást küldtünk az e-mail címére.',
+
+    'acc_delete' => 'Fiók törlése',
+    'del_warning' => 'A fiók törlése után annak összes erőforrása és adata véglegesen törlődik. Mielőtt törölné fiókját, kérjük, töltse le azokat az adatokat vagy információkat, amelyeket meg szeretne tartani.',
+    'del_conf' => 'Biztosan törölni szeretné a fiókját?',
+    'password_confirm_warning' => 'A fiók törlése után annak összes erőforrása és adata véglegesen törlődik. Kérjük, adja meg jelszavát annak megerősítéséhez, hogy véglegesen törölni kívánja fiókját.',
+
+
+    'update_password' => 'Jelszó frissítése',
+    'password_warning' => 'A biztonság érdekében győződjön meg arról, hogy fiókja hosszú, véletlenszerű jelszót használ.',
+    'current_password' => 'Jelenlegi jelszó',
+    'new_password' => 'Új jelszó',
+    'saved' => 'Mentve.',
+
+
 ];
