@@ -25,7 +25,7 @@ class TaskCreated extends Notification
     {
         return [
             'message' => 'Új feladat jött létre: ' . $this->task->title,
-            'url' => route('tasks.index', $this->task->id),
+            'url' => route('tasks.index', $this->task->group_id),
         ];
     }
 }

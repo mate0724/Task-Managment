@@ -7,6 +7,7 @@ use App\Models\Group;
 use Illuminate\Http\Request;
 use App\Notifications\TaskCreated;
 use App\Http\Controllers\Controller;
+use App\Notifications\TaskDueNotification;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Notification;
 
@@ -57,11 +58,14 @@ class TaskController extends Controller
             $filePath = $request->file('file')->store('tasks', 'public');
         }
 
-        $group->tasks()->create(array_merge($validated, [
+        $task = $group->tasks()->create(array_merge($validated, [
             'file_path' => $filePath,
         ]));
 
         
+        $members = $group->members;
+        Notification::send($members, new TaskCreated($task));
+        //Notification::send($members, new TaskDueNotification($task));
 
         return redirect()->route('tasks.index', $group)
             ->with('success', 'Feladat sikeresen létrehozva!');
