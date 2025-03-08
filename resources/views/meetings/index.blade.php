@@ -11,22 +11,21 @@
                     <h3 class="text-lg font-medium text-gray-900 mb-4">{{ __('messages.upcoming_meetings') }}</h3>
 
                     <x-primary-button class="mt-2">
-                        <a href="{{ route('meetings.create') }}" class="">
+                        <a href="{{ route('meetings.create') }}">
                             {{ __('messages.create_meeting') }}
                         </a>
                     </x-primary-button>
-
                 </div>
 
                 <div class="px-6 pb-6">
                     @forelse ($meetings as $meeting)
-                    <div class="mb-4 p-8 rounded-lg border border-gray-200 transition-all hover:shadow-md bg-gray-100">
+                    <div class="mb-4 p-8 rounded-lg border border-gray-200 transition-all hover:shadow-md bg-gray-100 px-6">
                         <div class="flex justify-between items-start">
-                            <div class="flex-1 pl-10">
-                                <h4 class="text-lg font-semibold text-gray-800 mb-2">{{ $meeting->title }}</h4>
+                            <div class="flex-1 pl-6">
+                                <h4 class="text-lg font-semibold text-gray-800 mb-2 mt-4">{{ $meeting->title }}</h4>
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
                                     <div class="flex items-center text-gray-600 gap-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                         </svg>
                                         {{ $meeting->scheduled_at->format('Y-m-d H:i') }}
@@ -47,8 +46,11 @@
                                         <span>{{ $meeting->attendees->pluck('name')->join(', ') }}</span>
                                     </div>
                                     @if($meeting->description)
-                                    <div class="mt-2 text-gray-700">
-                                        {{ $meeting->description }}
+                                    <div class="mt-2 text-gray-700 flex items-start mb-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+                                        </svg>
+                                        <span>{{ $meeting->description }}</span>
                                     </div>
                                     @endif
                                 </div>
@@ -56,7 +58,7 @@
                         </div>
                     </div>
                     @empty
-                    <div class="p-6 text-center bg-gray-100 rounded-lg">
+                    <div class="p-6 text-center rounded-lg">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
