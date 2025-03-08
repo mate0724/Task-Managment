@@ -53,6 +53,7 @@ return [
     'my_meetings' => 'My Meetings',
     'upcoming_meetings' => 'Upcoming Meetings',
     'create_meeting' => 'Create Meeting',
+    'no_meetings' => 'No meetings found.',
 
 
 

@@ -51,6 +51,7 @@ return [
     'my_meetings' => 'Meine Meetings',
     'upcoming_meetings' => 'Kommende Meetings',
     'create_meeting' => 'Meeting erstellen',
+    'no_meetings' => 'Keine Meetings gefunden.',
 
     //meetings.create.php
     'create_new_meeting' => 'Neues Meeting erstellen',

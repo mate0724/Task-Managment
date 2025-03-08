@@ -51,7 +51,7 @@ return [
     'my_meetings' => 'Mes Réunions',
     'upcoming_meetings' => 'Réunions à venir',
     'create_meeting' => 'Créer une Réunion',
-
+    'no_meetings' => 'Aucune réunion trouvée.',
     //meetings.create.php
     'create_new_meeting' => 'Créer une Nouvelle Réunion',
     'title' => 'Titre',

@@ -40,7 +40,7 @@ return [
 
 
     //groups.edit.php
-    'edit_group' => 'Edit Group',
+    'edit_group' => 'Csoport szerkesztése',
 
     //users.edit.php
     'edit_user' => 'Felhasználó szerkesztése',
@@ -56,7 +56,8 @@ return [
     'my_meetings' => 'Értekezleteim',
     'upcoming_meetings' => 'Közelgő értekezletek',
     'create_meeting' => 'Értekezlet létrehozása',
-
+    'no_meetings' => 'Nem találhatók értekezletek.',
+    
     //meetings.create.php
     'create_new_meeting' => 'Új értekezlet létrehozása',
     'title' => 'Cím',
