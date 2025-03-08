@@ -65,7 +65,7 @@ class TaskController extends Controller
         
         $members = $group->members;
         Notification::send($members, new TaskCreated($task));
-        //Notification::send($members, new TaskDueNotification($task));
+        Notification::send($members, new TaskDueNotification($task));
 
         return redirect()->route('tasks.index', $group)
             ->with('success', 'Feladat sikeresen létrehozva!');
