@@ -28,7 +28,7 @@ class CheckTaskDeadlines extends Command
     public function handle()
     {
         $today = Carbon::today();
-        $tasks = Task::whereDate('deadline', $today)->get();
+        $tasks = Task::whereDate('due_date', $today)->get();
         
         foreach ($tasks as $task) {
             $user = User::find($task->user_id);
