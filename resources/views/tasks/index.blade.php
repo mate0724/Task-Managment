@@ -16,7 +16,6 @@
                         </x-primary-button>
                         @endif
 
-
                         <div class="flex flex-col sm:flex-row gap-3 items-center">
                             <div class="flex flex-wrap gap-3">
                                 <button type="button" id="filter-low" class="filter-btn flex items-center px-4 py-2 border rounded-lg shadow-sm text-sm font-medium bg-white hover:bg-gray-50 transition-all duration-200 gap-3">
@@ -37,16 +36,14 @@
                                 </button>
                             </div>
 
-                            <!-- Rendezés -->
-                            <!-- <div class="flex items-center gap-2 ml-0 sm:ml-4 mt-2 sm:mt-0">
-                                <span class="text-sm text-gray-600">{{ __('Rendezés:') }}</span>
-                                <select id="sort-select" class="form-select rounded-md text-sm border-gray-300">
-                                    <option value="default">{{ __('Alapértelmezett') }}</option>
-                                    <option value="deadline-asc">{{ __('Határidő (növekvő)') }}</option>
-                                    <option value="deadline-desc">{{ __('Határidő (csökkenő)') }}</option>
-                                    <option value="status">{{ __('Státusz szerint') }}</option>
-                                </select>
-                            </div> -->
+                            <!-- Lejárt feladatok megjelenítése/elrejtése gomb -->
+                            <button type="button" id="toggle-overdue" class="ml-0 sm:ml-4 mt-2 sm:mt-0 px-4 py-2 border rounded-lg shadow-sm text-sm font-medium bg-white hover:bg-gray-50 transition-all duration-200 flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transform transition-transform" id="toggle-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                                <span id="toggle-text">{{ __('messages.hide_expired_tasks') }}</span>
+                                <span id="overdue-count" class="inline-flex items-center justify-center w-6 h-6 ml-1 text-xs font-medium text-white bg-red-500 rounded-full"></span>
+                            </button>
                         </div>
                     </div>
 
@@ -57,10 +54,11 @@
                     @else
                     <div id="tasks-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         @foreach ($tasks as $task)
-                        <div class="task-card border rounded-lg shadow-sm overflow-hidden"
+                        <div class="task-card border rounded-lg shadow-sm overflow-hidden {{ $task->due_date && strtotime($task->due_date) < strtotime(date('Y-m-d')) ? 'overdue-task' : '' }}"
                             data-priority="{{ $task->priority }}"
                             data-due-date="{{ $task->due_date ?? '9999-12-31' }}"
-                            data-status="{{ $task->status }}">
+                            data-status="{{ $task->status }}"
+                            data-is-overdue="{{ $task->due_date && strtotime($task->due_date) < strtotime(date('Y-m-d')) ? 'true' : 'false' }}">
 
                             <div class="bg-{{ $task->priority === 'high' ? 'red-100' : ($task->priority === 'medium' ? 'yellow-100' : 'green-100') }} px-4 py-2 flex justify-between items-center">
                                 <h3 class="font-bold truncate flex-1">{{ $task->title }}</h3>
@@ -76,8 +74,13 @@
                                 <div class="space-y-2 text-sm">
                                     <p>
                                         <span class="font-medium">{{ __('messages.deadline') }}:</span>
-                                        <span class="{{ $task->due_date && strtotime($task->due_date) < time() ? 'text-red-600 font-semibold' : '' }}">
+                                        <span class="{{ $task->due_date && strtotime($task->due_date) < strtotime(date('Y-m-d')) ? 'text-red-600 font-semibold' : ($task->due_date && strtotime($task->due_date) == strtotime(date('Y-m-d')) ? 'text-orange-600 font-semibold' : '') }}">
                                             {{ $task->due_date ? date('Y.m.d', strtotime($task->due_date)) : __('Nincs megadva') }}
+                                            @if($task->due_date && strtotime($task->due_date) < strtotime(date('Y-m-d')))
+                                                <span class="ml-1 text-red-600">{{ __('messages.expired') }}</span>
+                                            @elseif($task->due_date && strtotime($task->due_date) == strtotime(date('Y-m-d')))
+                                                <span class="ml-1 text-orange-600">{{ __('messages.today') }}</span>
+                                            @endif
                                         </span>
                                     </p>
                                     <p>
@@ -139,47 +142,52 @@
             const filterMedium = document.getElementById('filter-medium');
             const filterHigh = document.getElementById('filter-high');
             const filterAll = document.getElementById('filter-all');
-            const sortSelect = document.getElementById('sort-select');
-
+            const toggleOverdue = document.getElementById('toggle-overdue');
+            const toggleIcon = document.getElementById('toggle-icon');
+            const toggleText = document.getElementById('toggle-text');
+            const overdueCount = document.getElementById('overdue-count');
+            
             let currentFilter = 'all';
+            let showOverdue = true;
+
+            // Számoljuk meg a lejárt feladatokat
+            function updateOverdueCount() {
+                const overdueTasks = document.querySelectorAll('.task-card[data-is-overdue="true"]');
+                overdueCount.textContent = overdueTasks.length;
+                return overdueTasks.length;
+            }
+
+            
+            const overdueTaskCount = updateOverdueCount();
+            if (overdueTaskCount === 0) {
+                toggleOverdue.style.display = 'none'; // Ha nincs lejárt feladat, ne jelenjen meg a gomb
+            }
 
             function applyFiltersAndSort() {
                 const taskCards = document.querySelectorAll('.task-card');
 
                 taskCards.forEach(card => {
-                    // Apply priority filter
+                    
+                    let shouldDisplay = true;
+                    
+                    
                     const cardPriority = card.dataset.priority;
-
-                    if (currentFilter === 'all' || currentFilter === cardPriority) {
-                        card.style.display = '';
-                    } else {
-                        card.style.display = 'none';
-                        return; // Skip sorting for hidden cards
+                    if (currentFilter !== 'all' && currentFilter !== cardPriority) {
+                        shouldDisplay = false;
                     }
+                    
+                    
+                    const isOverdue = card.dataset.isOverdue === 'true';
+                    if (!showOverdue && isOverdue) {
+                        shouldDisplay = false;
+                    }
+                    
+                    
+                    card.style.display = shouldDisplay ? '' : 'none';
                 });
-
-                // Apply sorting
-                const sortBy = sortSelect.value;
-                const visibleCards = Array.from(taskCards).filter(card => card.style.display !== 'none');
-
-                if (sortBy !== 'default') {
-                    visibleCards.sort((a, b) => {
-                        if (sortBy === 'deadline-asc') {
-                            return a.dataset.dueDate.localeCompare(b.dataset.dueDate);
-                        } else if (sortBy === 'deadline-desc') {
-                            return b.dataset.dueDate.localeCompare(a.dataset.dueDate);
-                        } else if (sortBy === 'status') {
-                            return a.dataset.status.localeCompare(b.dataset.status);
-                        }
-                        return 0;
-                    });
-
-                    // Reappend in sorted order
-                    visibleCards.forEach(card => tasksContainer.appendChild(card));
-                }
             }
 
-            // Priority Filter event listeners
+            // Priority Filter eseményfigyelők
             filterLow.addEventListener('click', () => {
                 currentFilter = 'low';
                 updateFilterButtonStyles();
@@ -204,17 +212,30 @@
                 applyFiltersAndSort();
             });
 
-            // Sort event listener
-            sortSelect.addEventListener('change', applyFiltersAndSort);
+            // Lejárt feladatok megjelenítése/elrejtése
+            toggleOverdue.addEventListener('click', () => {
+                showOverdue = !showOverdue;
+                
+                
+                if (showOverdue) {
+                    toggleIcon.classList.remove('rotate-180');
+                    toggleText.textContent = '{{ __('messages.hide_expired_tasks') }}';
+                } else {
+                    toggleIcon.classList.add('rotate-180');
+                    toggleText.textContent = '{{ __('messages.show_expired_tasks') }}';
+                }
+                
+                applyFiltersAndSort();
+            });
 
             function updateFilterButtonStyles() {
-                // Reset all buttons
+                // Minden gomb alaphelyzetbe állítása
                 [filterLow, filterMedium, filterHigh, filterAll].forEach(btn => {
                     btn.classList.remove('bg-blue-100', 'border-blue-300');
                     btn.classList.add('bg-gray-50');
                 });
 
-                // Highlight active filter
+                // Aktív szűrő kiemelése
                 const activeBtn = {
                     'low': filterLow,
                     'medium': filterMedium,
@@ -228,8 +249,9 @@
                 }
             }
 
-            // Initialize with default settings
+           
             updateFilterButtonStyles();
+            applyFiltersAndSort();
         });
     </script>
 </x-app-layout>
