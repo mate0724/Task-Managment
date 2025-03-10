@@ -7,8 +7,8 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        
-                        <img src="{{ asset('/images/logo3.png') }}" class="block h-9 w-auto fill-current"/>
+
+                        <img src="{{ asset('/images/logo3.png') }}" class="block h-9 w-auto fill-current" />
                     </a>
                 </div>
 
@@ -69,7 +69,7 @@
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
                             <i class="fa fa-bell"></i>
                             @if (auth()->user()->unreadNotifications->count() > 0)
-                            <span class="badge bg-danger">{{ auth()->user()->unreadNotifications->count() }}</span>
+                            <span id="unread-count" class="badge bg-danger">{{ auth()->user()->unreadNotifications->count() }}</span>
                             @endif
                         </button>
                     </x-slot>
@@ -81,11 +81,15 @@
                         </div>
                         @endif
 
-                        @foreach (auth()->user()->unreadNotifications as $notification)
-                        <x-dropdown-link :href="$notification->data['url']" class="text-danger">
-                            {{ $notification->data['message'] }}
-                        </x-dropdown-link>
+                        @foreach(auth()->user()->unreadNotifications as $notification)
+                        <form action="{{ route('notifications.read', $notification->id) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="notification-item">
+                                {{ $notification->data['message'] }}
+                            </button>
+                        </form>
                         @endforeach
+
 
                         @foreach (auth()->user()->readNotifications as $notification)
                         <x-dropdown-link :href="$notification->data['url']" class="text-secondary">
@@ -186,27 +190,27 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-            <img src="{{ asset('images/home.png') }}" alt="Icon" style="margin-right: 10px;" class="inline-block w-5 h-5">
+                <img src="{{ asset('images/home.png') }}" alt="Icon" style="margin-right: 10px;" class="inline-block w-5 h-5">
                 {{ __('messages.home') }}
             </x-responsive-nav-link>
         </div>
 
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('groups.index')" :active="request()->routeIs('dashboard')">
-            <img src="{{ asset('images/group.png') }}" alt="Icon" style="margin-right: 10px;" class="inline-block w-5 h-5">
+                <img src="{{ asset('images/group.png') }}" alt="Icon" style="margin-right: 10px;" class="inline-block w-5 h-5">
                 {{ __('messages.groups') }}
             </x-responsive-nav-link>
         </div>
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('users.index')" :active="request()->routeIs('dashboard')">
-            <img src="{{ asset('images/user.png') }}" alt="Icon" style="margin-right: 10px;" class="inline-block w-5 h-5">
+                <img src="{{ asset('images/user.png') }}" alt="Icon" style="margin-right: 10px;" class="inline-block w-5 h-5">
                 {{ __('messages.users') }}
             </x-responsive-nav-link>
         </div>
 
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('meetings.index')" :active="request()->routeIs('dashboard')">
-            <img src="{{ asset('images/meeting.png') }}" alt="Icon" style="margin-right: 10px;" class="inline-block w-5 h-5">
+                <img src="{{ asset('images/meeting.png') }}" alt="Icon" style="margin-right: 10px;" class="inline-block w-5 h-5">
                 {{ __('messages.meetings') }}
             </x-responsive-nav-link>
         </div>

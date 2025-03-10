@@ -79,4 +79,15 @@ Route::get('locale/{lang}', [LocaleController::class, 'setLocale']);
 Route::get('/notifications/mark-as-read', [NotificationController::class, 'markAsRead'])->name('notifications.markAsRead');
 Route::get('/notifications', [NotificationController::class, 'index'])->name('notifications.index');
 
+Route::post('/notifications/read/{id}', function ($id) {
+    $notification = auth()->user()->notifications()->find($id);
+    
+    if ($notification) {
+        $notification->markAsRead();
+    }
+
+    return back(); 
+})->name('notifications.read');
+
+
 require __DIR__ . '/auth.php';
