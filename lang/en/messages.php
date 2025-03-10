@@ -75,6 +75,11 @@ return [
     'file' => 'Attched File',
     'comments' => 'Comments',
     'no_tasks' => 'There are no tasks yet.',
+    'hide_expired_tasks' => 'Hide Expired Tasks',
+    'show_expired_tasks' => 'Show Expired Tasks',
+    'expired' => '(Expired)',
+    'today' => '(Today)',
+
 
     //tasks.create.php
     'create_new_task' => 'Create New Task',

@@ -70,6 +70,10 @@ return [
     'status' => 'Status',
     'file' => 'Angehängte Datei',
     'comments' => 'Kommentare',
+    'hide_expired_tasks' => 'Abgelaufene Aufgaben ausblenden',
+    'show_expired_tasks' => 'Abgelaufene Aufgaben anzeigen',
+    'expired' => '(Abgelaufen)',
+    'today' => '(Heute)',
 
     //tasks.create.php
     'create_new_task' => 'Neue Aufgabe erstellen',

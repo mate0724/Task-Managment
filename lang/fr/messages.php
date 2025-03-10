@@ -69,6 +69,10 @@ return [
     'status' => 'Statut',
     'file' => 'Fichier Joint',
     'comments' => 'Commentaires',
+    'hide_expired_tasks' => 'Masquer les tâches expirées',
+    'show_expired_tasks' => 'Afficher les tâches expirées',
+    'expired' => '(Expirée)',
+    'today' => '(Aujourd\'hui)',
 
     //tasks.create.php
     'create_new_task' => 'Créer une Nouvelle Tâche',

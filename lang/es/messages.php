@@ -69,6 +69,10 @@ return [
     'status' => 'Estado',
     'file' => 'Archivo Adjunto',
     'comments' => 'Comentarios',
+    'hide_expired_tasks' => 'Ocultar Tareas Vencidas',
+    'show_expired_tasks' => 'Mostrar Tareas Vencidas',
+    'expired' => '(Vencida)',
+    'today' => '(Hoy)',
 
     //tasks.create.php
     'create_new_task' => 'Crear Nueva Tarea',

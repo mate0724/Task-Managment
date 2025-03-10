@@ -75,6 +75,10 @@ return [
     'status' => 'Státusz',
     'file' => 'Csatolt fájl',
     'comments' => 'Megjegyzések',
+    'hide_expired_tasks' => 'Lejárt feladatok elrejtése',
+    'show_expired_tasks' => 'Lejárt feladatok megjelenítése',
+    'expired' => '(Lejárt)',
+    'today' => '(Ma)',
 
     //tasks.create.php
     'create_new_task' => 'Új feladat létrehozása',
