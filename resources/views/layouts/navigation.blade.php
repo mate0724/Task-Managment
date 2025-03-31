@@ -81,21 +81,35 @@
                         </div>
                         @endif
 
-                        @foreach(auth()->user()->unreadNotifications as $notification)
-                        <form action="{{ route('notifications.read', $notification->id) }}" method="POST">
-                            @csrf
-                            <button type="submit" class="notification-item">
+                        <div class="max-h-60 overflow-y-auto">
+                            @php
+                            $latestNotifications = auth()->user()->notifications()->latest()->take(3)->get();
+                            @endphp
+
+                            @foreach($latestNotifications as $notification)
+                            @if($notification->read_at === null)
+                            <form action="{{ route('notifications.read', $notification->id) }}" method="POST">
+                                @csrf
+                                <button type="submit" class="notification-item w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                    {{ $notification->data['message'] }}
+                                </button>
+                            </form>
+                            @else
+                            <x-dropdown-link :href="$notification->data['url']" class="text-secondary">
                                 {{ $notification->data['message'] }}
-                            </button>
-                        </form>
-                        @endforeach
+                            </x-dropdown-link>
+                            @endif
+                            @endforeach
 
-
-                        @foreach (auth()->user()->readNotifications as $notification)
-                        <x-dropdown-link :href="$notification->data['url']" class="text-secondary">
-                            {{ $notification->data['message'] }}
-                        </x-dropdown-link>
-                        @endforeach
+                            <!-- Ha van több értesítés, mutassunk egy "Összes megtekintése" gombot -->
+                            @if(auth()->user()->notifications()->count() > 3)
+                            <div class="px-4 py-2 text-center border-t">
+                                <a href="{{ route('notifications.index') }}" class="text-sm text-blue-600 hover:text-blue-800">
+                                    {{ __('Összes megtekintése') }}
+                                </a>
+                            </div>
+                            @endif
+                        </div>
                     </x-slot>
                 </x-dropdown>
 
