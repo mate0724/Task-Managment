@@ -84,10 +84,10 @@
                                                 {{ __('messages.edit') }}
                                             </x-primary-button>
                                         </a>
-                                        <form action="{{ route('groups.destroy', $group) }}" method="POST" class="inline-block">
+                                        <form action="{{ route('groups.destroy', $group) }}" method="POST" class="inline-block" id="delete-form-{{ $group->id }}">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="delete_button" onclick="return confirmDelete()">
+                                            <button type="button" class="delete_button" onclick="showDeleteConfirmation({{ $group->id }}, '{{ $group->name }}')">
                                                 {{ __('messages.delete') }}
                                             </button>
                                         </form>
@@ -128,10 +128,10 @@
                                             {{ __('messages.edit') }}
                                         </x-primary-button>
                                     </a>
-                                    <form action="{{ route('groups.destroy', $group) }}" method="POST">
+                                    <form action="{{ route('groups.destroy', $group) }}" method="POST" id="delete-form-mobile-{{ $group->id }}">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="delete_button" onclick="return confirmDelete()">
+                                        <button type="button" class="delete_button" onclick="showDeleteConfirmation({{ $group->id }}, '{{ $group->name }}')">
                                             {{ __('messages.delete') }}
                                         </button>
                                     </form>
@@ -146,12 +146,66 @@
             </div>
         </div>
     </div>
+
+    <!-- Custom Delete Confirmation Modal -->
+    <div id="deleteConfirmationModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg shadow-lg p-6 w-full custom-modal-width  mx-4">
+            <div class="mb-4">
+                <h3 class="text-lg font-semibold text-gray-900">Csoport törlése</h3>
+                <p class="mt-2 text-gray-600" id="deleteConfirmationText">Biztosan törölni szeretnéd a csoportot?</p>
+            </div>
+            <div class="flex justify-end custom-button-spacing">
+                <button id="cancelDeleteButton" class="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors">
+                    MÉGSE
+                </button>
+                <button id="confirmDeleteButton" class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-red-600 transition-colors">
+                    TÖRLÉS
+                </button>
+            </div>
+        </div>
+    </div>
 </x-app-layout>
 
 <script>
-    function confirmDelete() {
-        return confirm('Biztosan törölni szeretnéd a csoportot?');
+    let currentFormId = null;
+
+    function showDeleteConfirmation(groupId, groupName) {
+        
+        currentFormId = groupId;
+        
+        if (groupName) {
+            document.getElementById('deleteConfirmationText').textContent = `Biztosan törölni szeretnéd a(z) "${groupName}" csoportot?`;
+        } else {
+            document.getElementById('deleteConfirmationText').textContent = 'Biztosan törölni szeretnéd a csoportot?';
+        }
+        
+        // Show the modal
+        document.getElementById('deleteConfirmationModal').classList.remove('hidden');
     }
+
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        //Ha a felhasználó a "MÉGSE" gombra kattint, a modal ablak bezárul anélkül, hogy bármi történne
+        document.getElementById('cancelDeleteButton').addEventListener('click', function() {
+            document.getElementById('deleteConfirmationModal').classList.add('hidden');
+        });
+        
+        //Ha a felhasználó a "TÖRLÉS" gombra kattint, a rendszer megkeresi a megfelelő form-ot a currentFormId alapján
+        document.getElementById('confirmDeleteButton').addEventListener('click', function() {
+            if (currentFormId !== null) {
+                // A form lehet desktop vagy mobil nézethez tartozó (ezért van két különböző ID)
+                const form = document.getElementById(`delete-form-${currentFormId}`) || 
+                             document.getElementById(`delete-form-mobile-${currentFormId}`);
+                
+                if (form) {
+                    form.submit();
+                }
+            }
+            //A megtalált form-ot a kód programozottan beküldi a form.submit() utasítással
+            //A form elküldése után a modal ablak bezárul
+            document.getElementById('deleteConfirmationModal').classList.add('hidden');
+        });
+    });
 </script>
 
 <style>
@@ -217,5 +271,13 @@
     .add_group_button svg {
         width: 1.25rem;
         height: 1.25rem;
+    }
+
+    .custom-modal-width {
+        max-width: 1000px; 
+    }
+
+    .custom-button-spacing {
+        gap: 20px; 
     }
 </style>
