@@ -26,13 +26,13 @@ class TaskDueNotification extends Notification
     }
 
 
-    public function toDatabase(object $notifiable)
+    public function toArray(object $notifiable)
     {
         return [
             'message' => "A(z) '{$this->task->title}' feladat határideje ma van!",
             'task_id' => $this->task->id,
             'url' => route('tasks.index', ['group' => $this->task->group_id]),
-            // 'url' => route('tasks.show', $this->task->id),
+            //'url' => route('task.show', $this->task->id),
         ];
     }
 }

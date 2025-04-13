@@ -95,7 +95,7 @@
                                 </button>
                             </form>
                             @else
-                            <x-dropdown-link :href="$notification->data['url']" class="text-secondary">
+                            <x-dropdown-link :href="$notification->data['url'] ?? '#'" class="text-secondary">
                                 {{ $notification->data['message'] }}
                             </x-dropdown-link>
                             @endif
