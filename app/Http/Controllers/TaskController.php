@@ -6,9 +6,10 @@ use App\Models\Task;
 use App\Models\Group;
 use Illuminate\Http\Request;
 use App\Notifications\TaskCreated;
+use App\Notifications\TaskUpdated;
 use App\Http\Controllers\Controller;
-use App\Notifications\TaskDueNotification;
 use Illuminate\Support\Facades\Storage;
+use App\Notifications\TaskDueNotification;
 use Illuminate\Support\Facades\Notification;
 
 
@@ -65,7 +66,7 @@ class TaskController extends Controller
         
         $members = $group->members;
         Notification::send($members, new TaskCreated($task));
-        Notification::send($members, new TaskDueNotification($task));
+        //Notification::send($members, new TaskDueNotification($task));
 
         return redirect()->route('tasks.index', $group)
             ->with('success', 'Feladat sikeresen létrehozva!');
@@ -105,6 +106,9 @@ class TaskController extends Controller
         }
 
         $task->update($validated);
+
+        $members = $group->members;
+        Notification::send($members, new TaskUpdated($task));
 
         return redirect()->route('tasks.index', $group)
             ->with('success', 'Feladat sikeresen frissítve!');

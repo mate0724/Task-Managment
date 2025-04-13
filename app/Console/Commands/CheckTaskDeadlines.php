@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use App\Models\Task;
 use App\Models\User;
 use App\Notifications\TaskDueNotification;
+use Illuminate\Support\Facades\Notification;
 use Carbon\Carbon;
 
 class CheckTaskDeadlines extends Command
@@ -29,11 +30,18 @@ class CheckTaskDeadlines extends Command
     {
         $today = Carbon::today();
         $tasks = Task::whereDate('due_date', $today)->get();
-        
+
         foreach ($tasks as $task) {
+            /*
             $user = User::find($task->user_id);
             if ($user) {
                 $user->notify(new TaskDueNotification($task));
+            }
+            */
+            $group = $task->group;
+            if ($group) {
+                $members = $group->members;
+                Notification::send($members, new TaskDueNotification($task));
             }
         }
 
