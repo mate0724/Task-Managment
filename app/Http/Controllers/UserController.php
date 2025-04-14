@@ -90,10 +90,10 @@ class UserController extends Controller
         $fileName = 'users_' . now()->format('Y_m_d_H_i_s') . '.csv';
 
         $handle = fopen('php://temp', 'r+');
-        fputcsv($handle, $csvHeader);
+        fputcsv($handle, $csvHeader, ';', '"');
 
         foreach ($csvData as $row) {
-            fputcsv($handle, $row);
+            fputcsv($handle, $row, ';', '"');
         }
 
         rewind($handle);
@@ -101,8 +101,11 @@ class UserController extends Controller
         fclose($handle);
 
         return Response::make($content, 200, [
-            'Content-Type' => 'text/csv',
+            'Content-Type' => 'text/csv; charset=UTF-8',
             'Content-Disposition' => 'attachment; filename="' . $fileName . '"',
+            'Content-Length' => strlen($content),
+            'Cache-Control' => 'no-store, no-cache',
+            'Pragma' => 'no-cache',
         ]);
     }
 }
