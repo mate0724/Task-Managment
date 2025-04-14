@@ -20,6 +20,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Schedule::command('tasks:check-deadlines')->daily();
+        Schedule::command('tasks:check-deadlines')->dailyAt('08:00');
     }
 }

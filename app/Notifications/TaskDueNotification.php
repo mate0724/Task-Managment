@@ -32,6 +32,7 @@ class TaskDueNotification extends Notification
             'message' => "A(z) '{$this->task->title}' feladat határideje ma van!",
             'task_id' => $this->task->id,
             'url' => route('tasks.index', ['group' => $this->task->group_id]),
+            //'url' => route('groups.tasks.index', ['group' => $this->task->group_id]),
             //'url' => route('task.show', $this->task->id),
         ];
     }
