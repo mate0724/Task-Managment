@@ -12,18 +12,22 @@
                     <h3 class="text-lg font-semibold mb-4">{{ __('Értesítések listája') }}</h3>
 
                     @if ($notifications->isEmpty())
-                        <p class="text-gray-500">{{ __('Nincsenek új értesítések.') }}</p>
+                    <p class="text-gray-500">{{ __('Nincsenek új értesítések.') }}</p>
                     @else
-                        <ul class="divide-y divide-gray-200">
-                            @foreach ($notifications as $notification)
-                                <li class="py-2">
-                                    <div class="flex justify-between items-center">
-                                        <span>{{ $notification->data['message'] ?? __('Új értesítés') }}</span>
-                                        <small class="text-gray-500">{{ $notification->created_at->diffForHumans() }}</small>
-                                    </div>
-                                </li>
-                            @endforeach
-                        </ul>
+                    <ul class="divide-y divide-gray-200">
+                        @foreach ($notifications as $notification)
+                        <li class="py-2">
+                            <div class="flex justify-between items-center">
+                                <span>{{ $notification->data['message'] ?? __('Új értesítés') }}</span>
+                                <small class="text-gray-500">{{ $notification->created_at->diffForHumans() }}</small>
+                            </div>
+                        </li>
+                        @endforeach
+                    </ul>
+
+                    <div class="mt-4">
+                        {{ $notifications->links() }}
+                    </div>
                     @endif
                 </div>
             </div>
