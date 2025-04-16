@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="flex justify-between items-center mb-2">
-                        <div class="text-lg font-semibold text-gray-900 dark:text-white">
+                        <div class="text-lg font-semibold text-gray-900 dark:text-black">
                             {{ __('messages.groups') }}
                         </div>
                         @if (auth()->user()->role === 'admin')
