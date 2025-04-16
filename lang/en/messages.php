@@ -150,5 +150,8 @@ return [
 
     'view_all' => 'View all',
 
+    'dark_mode' => 'Dark Mode',
+    'toggle_theme' => 'Toggle between light and dark mode',
+
 
 ];

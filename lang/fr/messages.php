@@ -141,7 +141,10 @@ return [
     'task_due_today' => "La tâche ':title' est prévue pour aujourd'hui !",
     'task_updated' => "La tâche ':title' a été mise à jour !",
 
-'view_all' => 'Tout voir',
+    'view_all' => 'Tout voir',
+
+    'dark_mode' => 'Mode sombre',
+    'toggle_theme' => 'Basculer entre le mode clair et sombre',
 
 
 ];

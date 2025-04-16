@@ -147,5 +147,7 @@ return [
 
     'view_all' => 'Összes megtekintése',
 
+    'dark_mode' => 'Sötét mód',
+    'toggle_theme' => 'Váltás világos/sötét módra',
 
 ];

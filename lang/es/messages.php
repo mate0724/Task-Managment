@@ -143,4 +143,7 @@ return [
 
     'view_all' => 'Ver todo',
 
+    'dark_mode' => 'Modo oscuro',
+    'toggle_theme' => 'Alternar entre modo claro y oscuro',
+
 ];

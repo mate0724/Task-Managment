@@ -145,4 +145,7 @@ return [
 
     'view_all' => 'Alle anzeigen',
 
+    'dark_mode' => 'Dunkelmodus',
+    'toggle_theme' => 'Wechseln Sie zwischen hellem und dunklem Modus',
+
 ];
