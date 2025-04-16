@@ -131,4 +131,17 @@ return [
 
     'welcome_groups' => 'Bienvenue dans l\'interface de gestion des groupes ! Ici, vous pouvez voir tous les groupes dont vous êtes membre. Dans le tableau, vous trouverez vos partenaires, le chef du groupe et toutes les informations importantes. Cliquez simplement sur le nom du groupe pour voir les tâches associées.',
 
+
+    'remember_me' => 'Se souvenir de moi',
+    'login' => 'Connexion',
+
+    'group_created' => 'Nouveau groupe créé: :name',
+    'meeting_created' => 'Nouvelle réunion créée : :title',
+    'task_created' => 'Nouvelle tâche créée : :title',
+    'task_due_today' => "La tâche ':title' est prévue pour aujourd'hui !",
+    'task_updated' => "La tâche ':title' a été mise à jour !",
+
+'view_all' => 'Tout voir',
+
+
 ];

@@ -24,7 +24,7 @@ class MeetingCreated extends Notification
     public function toArray($notifiable)
     {
         return [
-            'message' => 'Új értekezlet jött létre: ' . $this->meeting->title,
+            'message' => __('messages.meeting_created', ['title' => $this->meeting->title]),
             'url' => route('meetings.index', $this->meeting->id),
         ];
     }

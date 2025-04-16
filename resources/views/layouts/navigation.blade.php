@@ -105,7 +105,7 @@
                             @if(auth()->user()->notifications()->count() > 3)
                             <div class="px-4 py-2 text-center border-t">
                                 <a href="{{ route('notifications.index') }}" class="text-sm text-blue-600 hover:text-blue-800">
-                                    {{ __('Összes megtekintése') }}
+                                    {{ __('messages.view_all') }}
                                 </a>
                             </div>
                             @endif
@@ -227,6 +227,44 @@
                 <img src="{{ asset('images/meeting.png') }}" alt="Icon" style="margin-right: 10px;" class="inline-block w-5 h-5">
                 {{ __('messages.meetings') }}
             </x-responsive-nav-link>
+        </div>
+
+        <!-- Reszponzív Nyelvválasztó dropdown -->
+        <div class="pt-2 pb-3 space-y-1">
+            <x-dropdown align="right" width="48">
+                <x-slot name="trigger">
+                    <x-responsive-nav-link href="#" class="flex items-center w-full">
+                        <img src="{{ asset('images/languages.png') }}" alt="Icon" style="margin-right: 10px;" class="inline-block w-5 h-5">
+                        {{ __('messages.language') }}
+                        <svg class="fill-current h-4 w-4 ml-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </x-responsive-nav-link>
+                </x-slot>
+
+                <x-slot name="content">
+                    <x-dropdown-link :href="url('locale/en')" class="flex items-center space-x-2">
+                        <img src="{{ asset('images/flags/en.png') }}" alt="English" style="margin-right: 10px;" class="inline w-5 h-5 rounded-full">
+                        {{ __('messages.english') }}
+                    </x-dropdown-link>
+                    <x-dropdown-link :href="url('locale/es')" class="flex items-center space-x-2">
+                        <img src="{{ asset('images/flags/es.png') }}" alt="English" style="margin-right: 10px;" class="inline w-5 h-5 rounded-full">
+                        {{ __('messages.spanish') }}
+                    </x-dropdown-link>
+                    <x-dropdown-link :href="url('locale/fr')" class="flex items-center space-x-2">
+                        <img src="{{ asset('images/flags/fr.png') }}" alt="English" style="margin-right: 10px;" class="inline w-5 h-5 rounded-full">
+                        {{ __('messages.french') }}
+                    </x-dropdown-link>
+                    <x-dropdown-link :href="url('locale/de')" class="flex items-center space-x-2">
+                        <img src="{{ asset('images/flags/de.png') }}" alt="English" style="margin-right: 10px;" class="inline w-5 h-5 rounded-full">
+                        {{ __('messages.german') }}
+                    </x-dropdown-link>
+                    <x-dropdown-link :href="url('locale/hu')" class="flex items-center space-x-2">
+                        <img src="{{ asset('images/flags/hu.png') }}" alt="English" style="margin-right: 10px;" class="inline w-5 h-5 rounded-full">
+                        {{ __('messages.hungarian') }}
+                    </x-dropdown-link>
+                </x-slot>
+            </x-dropdown>
         </div>
 
 

@@ -57,7 +57,7 @@ return [
     'upcoming_meetings' => 'Közelgő értekezletek',
     'create_meeting' => 'Értekezlet létrehozása',
     'no_meetings' => 'Nem találhatók értekezletek.',
-    
+
     //meetings.create.php
     'create_new_meeting' => 'Új értekezlet létrehozása',
     'title' => 'Cím',
@@ -134,7 +134,18 @@ return [
     'new_password' => 'Új jelszó',
     'saved' => 'Mentve.',
 
-    'welcome_groups' => 'Üdvözlünk a Csoportkezelő felületen! Itt láthatod az összes csoportodat, amelyeknek tagja vagy. A táblázatban megtalálod a partnereidet, a csoport vezetőjét és minden fontos információt. Kattints egyszerűen a csoport nevére a hozzá tartozó feladatok megtekintéséhez.'
+    'welcome_groups' => 'Üdvözlünk a Csoportkezelő felületen! Itt láthatod az összes csoportodat, amelyeknek tagja vagy. A táblázatban megtalálod a partnereidet, a csoport vezetőjét és minden fontos információt. Kattints egyszerűen a csoport nevére a hozzá tartozó feladatok megtekintéséhez.',
+
+    'remember_me' => 'Emlékezz rám',
+    'login' => 'Bejelentkezés',
+
+    'group_created' => 'Új csoport jött létre: :name',
+    'meeting_created' => 'Új értekezlet jött létre: :title',
+    'task_created' => 'Új feladat jött létre: :title',
+    'task_due_today' => "A(z) ':title' feladat határideje ma van!",
+    'task_updated' => "A(z) ':title' feladat frissítve lett!",
+
+    'view_all' => 'Összes megtekintése',
 
 
 ];

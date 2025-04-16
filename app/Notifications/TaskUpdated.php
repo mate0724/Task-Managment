@@ -30,7 +30,7 @@ class TaskUpdated extends Notification
     public function toArray(object $notifiable): array
     {
         return [
-            'message' => "A(z) '{$this->task->title}' feladat frissítve lett!",
+            'message' => __('messages.task_updated', ['title' => $this->task->title]),
             'task_id' => $this->task->id,
             'url' => route('tasks.index', ['group' => $this->task->group_id]),
         ];

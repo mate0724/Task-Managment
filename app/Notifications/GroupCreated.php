@@ -24,7 +24,7 @@ class GroupCreated extends Notification
     public function toArray($notifiable)
     {
         return [
-            'message' => 'Új csoport jött létre: ' . $this->group->name,
+            'message' => __('messages.group_created', ['name' => $this->group->name]),
             'url' => route('groups.index', $this->group->id),
         ];
     }

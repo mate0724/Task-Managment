@@ -131,4 +131,16 @@ return [
 
     'welcome_groups' => 'Bienvenido a la interfaz de Gestión de Grupos! Aquí puedes ver todos los grupos de los que eres miembro. En la tabla encontrarás a tus compañeros, al líder del grupo y toda la información importante. Simplemente haz clic en el nombre del grupo para ver las tareas asociadas.',
 
+    'remember_me' => 'Recuérdame',
+    'login' => 'Iniciar sesión',
+
+    'group_created' => 'Nuevo grupo creado: :name',
+    'meeting_created' => 'Nueva reunión creada: :title',
+    'task_created' => 'Nueva tarea creada: :title',
+    'task_due_today' => "¡La tarea ':title' vence hoy!",
+    'task_updated' => "La tarea ':title' ha sido actualizada!",
+
+
+    'view_all' => 'Ver todo',
+
 ];

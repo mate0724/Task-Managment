@@ -139,6 +139,16 @@ return [
 
     'welcome_groups' => 'Welcome to the Group Management interface! Here you can see all the groups you are a member of. In the table, you will find your partners, the group leader, and all important information. Simply click on the group name to view the associated tasks.',
 
+    'remember_me' => 'Remember me',
+    'login' => 'Login',
+
+    'group_created' => 'A new group has been created: :name',
+    'meeting_created' => 'New meeting created: :title',
+    'task_created' => 'New task created: :title',
+    'task_due_today' => "The task ':title' is due today!",
+    'task_updated' => "The task ':title' has been updated!",
+
+    'view_all' => 'View all',
 
 
 ];

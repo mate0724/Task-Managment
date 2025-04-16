@@ -24,7 +24,7 @@ class TaskCreated extends Notification
     public function toArray($notifiable)
     {
         return [
-            'message' => 'Új feladat jött létre: ' . $this->task->title,
+            'message' => __('messages.task_created', ['title' => $this->task->title]),
             'url' => route('tasks.index', ['group' => $this->task->group_id]),
 
         ];

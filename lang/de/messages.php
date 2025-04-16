@@ -133,4 +133,16 @@ return [
 
     'welcome_groups' => 'Willkommen in der Gruppenverwaltungsoberfläche! Hier sehen Sie alle Gruppen, in denen Sie Mitglied sind. In der Tabelle finden Sie Ihre Partner, den Gruppenleiter und alle wichtigen Informationen. Klicken Sie einfach auf den Namen der Gruppe, um die zugehörigen Aufgaben anzuzeigen.',
 
+    'remember_me' => 'Angemeldet bleiben',
+    'login' => 'Anmelden',
+
+    'group_created' => 'Neue Gruppe erstellt: ',
+    'meeting_created' => 'Neues Meeting erstellt: :title',
+    'task_created' => 'Neue Aufgabe erstellt: :title',
+    'task_due_today' => "Die Aufgabe ':title' ist heute fällig!",
+    'task_updated' => "Die Aufgabe ':title' wurde aktualisiert!",
+
+
+    'view_all' => 'Alle anzeigen',
+
 ];
